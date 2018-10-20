@@ -1,0 +1,5 @@
+raw-data/*
+data/raw-corpus.txt
+bin/*
+tmp/*
+results/*

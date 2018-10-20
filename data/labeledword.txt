@@ -1,0 +1,300 @@
+nghèo đói	1
+bố cu mẹ đĩ	1
+đức cơ	1
+ó cá	1
+lệt bệt	1
+coi mòi	1
+cà phê	1
+thích đáng	1
+danh bất hư truyền	1
+trung tu	1
+ầm ì	1
+vận động	1
+khác nào	1
+đồng lòng	1
+nặng tay	1
+mắm cái	1
+đầu sông ngọn nguồn	1
+cất giấu	1
+tan hợp	1
+quy tắc tam suất	1
+ca sỹ	1
+lụ khụ	1
+cảm quan	1
+chống trả	1
+là cùng	1
+te tua	1
+xinh xẻo	1
+súng khai hậu	1
+cúc cung tận tuỵ	1
+phận mỏng cánh chuồn	1
+thử nghiệm	1
+du hí	1
+giai tầng	1
+ba bể	1
+mang tiếng	1
+bật lửa	1
+nước ngọt	1
+trứng cá	1
+túc cầu	1
+tuế nguyệt	1
+trứng mà đòi khôn hơn vịt	1
+làm phúc	1
+du kích	1
+lô xích xông	1
+thuyền tán	1
+lạ lùng	1
+tái hợp	1
+giao cảm	1
+nghi kị	1
+bí truyền	1
+niêm cất	1
+thiên kinh vạn quyển	1
+lượng thứ	1
+tòm tem	1
+đích thân	1
+lòng khòng	1
+hầu sáng	1
+buôn gánh bán bưng	1
+canh tác	1
+tình cảm chủ nghĩa	1
+quay quắt	1
+vĩnh châu	1
+luân thường	1
+thâu thái	1
+chiết quang	1
+đoàn lạp	1
+yếu kém	1
+lo buồn	1
+ái phi	1
+hạng mục	1
+tội phạm chiến tranh	1
+bị gậy	1
+quỷ quái	1
+xuống dốc	1
+sáng loáng	1
+thuỷ văn	1
+ung thư	1
+nhiệm mầu	1
+liên tiếp	1
+mỗi một	1
+gian tế	1
+giáp lai	1
+toe toét	1
+tưng tưng	1
+bít tất	1
+trung thu	1
+vẹn tròn	1
+thì thà thì thầm	1
+cãi cọ	1
+tuyệt hảo	1
+đồng chủng	1
+số hạng	1
+nổi đoá	1
+kỳ thủ	1
+ngắn gọn	1
+đường xoáy ốc	1
+súng liên thanh	1
+cử động	1
+công sứ quán	1
+mỹ nữ	1
+trống trải	1
+làu bàu	1
+kết tủa	1
+tràn cung mây	1
+lúa nổi	1
+cẩm nang	1
+bán sống bán chết	1
+trùng lặp	1
+đổ bệnh	1
+biểu lộ	1
+yên mỹ	1
+dầu gội	1
+gia hình	1
+sinh nhật	1
+hát xướng	1
+nhất bên trọng nhất bên khinh	1
+trót lọt	1
+bỏ ngũ	1
+tổng dự toán	1
+lều quều	1
+nương náu	1
+chính phủ điện tử	1
+nhèo nhẽo	1
+ngao ngán	1
+khố rách	1
+địch tình	1
+truy cập ngẫu nhiên	1
+lộ giới	1
+máy cán	1
+mẫn cảm	1
+toàn cục	1
+cưỡng hôn	1
+mùi gì	1
+bản lãnh	1
+địa thế	1
+quàng quạc	1
+nguyên tố hoá học	1
+chậm chạp	1
+cứ liệu	1
+không hơn không kém	1
+tia vũ trụ	1
+chả quế	1
+huỷ bỏ	1
+xấc xược	1
+quả tang	1
+cổ giả	1
+khí thiên nhiên	1
+dàn dựng	1
+cô nương	1
+ngủ khì	1
+bạt hồn	1
+đầu trò	1
+suy yếu	1
+ét xăng	1
+vày vò	1
+phức điệu	1
+vị lợi	1
+động cơ đốt ngoài	1
+khẳng khái	1
+lưu manh	1
+góc đầy	1
+lịch pháp	1
+cất giữ	1
+hoá giá	1
+môi trường	1
+bạch lạp	1
+khinh khi	1
+lòm khòm	1
+hạ sĩ	1
+tra vấn	1
+khật khà khật khừ	1
+phẩm chất	1
+trộm cướp	1
+sao y bản chính	1
+quế võ	1
+nguyện ước	1
+khấn vái	1
+cười khẩy	1
+nhăn nheo	1
+sân khách	1
+kiêng khem	1
+khắp chợ cùng quê	1
+bội phần	1
+trông ngóng	1
+đậm đặc	1
+hát bắc	1
+đánh đông dẹp bắc	1
+lịch cà lịch kịch	1
+nhỡ bước	1
+con ong cái kiến	1
+kinh nghĩa	1
+nói năng	1
+tụng ca	1
+phản gián	1
+chùn chụt	1
+ngầy ngậy	1
+tư chức	1
+công nghệ sạch	1
+phủ sóng	1
+tế nhị	1
+nghèo đói đức cơ	0
+ó cá nhám	0
+lệt bệt thụi	0
+coi mòi cà phê	0
+thích đáng trung tu	0
+bộ ầm ì	0
+hỡi vận động	0
+khác nào đồng lòng	0
+nặng tay lùi	0
+dọng mắm cái	0
+hộp đạp	0
+cất giấu tan hợp	0
+ca sỹ lụ khụ	0
+cảm quan chống trả	0
+là cùng te tua	0
+xinh xẻo thử nghiệm	0
+du hí giai tầng	0
+trì ba bể	0
+mang tiếng bật lửa	0
+nước ngọt trứng cá	0
+túc cầu xầu	0
+tuế nguyệt rít	0
+làm phúc du kích	0
+thuyền tán lạ lùng	0
+tái hợp giao cảm	0
+sây nghi kị	0
+bí truyền niêm cất	0
+lượng thứ tòm tem	0
+chống đích thân	0
+lòng khòng quơ	0
+hầu sáng canh tác	0
+ngáy quay quắt	0
+vĩnh châu luân thường	0
+thâu thái chiết quang	0
+đoàn lạp yếu kém	0
+shop lo buồn	0
+ái phi hạng mục	0
+bị gậy sớt	0
+quỷ quái đớn	0
+xuống dốc vầu	0
+sáng loáng thuỷ văn	0
+ung thư nhiệm mầu	0
+liên tiếp mỗi một	0
+gian tế giáp lai	0
+ốm toe toét	0
+bối nhót	0
+tưng tưng bít tất	0
+trung thu vẹn tròn	0
+saccharin cãi cọ	0
+tuyệt hảo đồng chủng	0
+bứa số hạng	0
+nổi đoá kỳ thủ	0
+ngắn gọn cử động	0
+mỹ nữ trống trải	0
+làu bàu vố	0
+kết tủa lỉnh	0
+lúa nổi cẩm nang	0
+trùng lặp đổ bệnh	0
+biểu lộ yên mỹ	0
+dầu gội thồ	0
+gia hình sinh nhật	0
+hát xướng trót lọt	0
+bỏ ngũ thuẫn	0
+lều quều nương náu	0
+nhèo nhẽo ngao ngán	0
+khố rách địch tình	0
+đừ khéo	0
+lộ giới máy cán	0
+mẫn cảm toàn cục	0
+cưỡng hôn mùi gì	0
+bản lãnh địa thế	0
+quàng quạc chậm chạp	0
+cứ liệu chả quế	0
+huỷ bỏ xấc xược	0
+quả tang cổ giả	0
+dàn dựng cô nương	0
+ngủ khì bạt hồn	0
+mướn đầu trò	0
+suy yếu ngông	0
+ét xăng vày vò	0
+martinique phức điệu	0
+vị lợi khẳng khái	0
+lưu manh góc đầy	0
+lịch pháp cất giữ	0
+hoá giá môi trường	0
+bạch lạp khinh khi	0
+lòm khòm hạ sĩ	0
+tra vấn bớt	0
+phẩm chất lóp	0
+trộm cướp nhặm	0
+quế võ nguyện ước	0
+khấn vái cười khẩy	0
+nhăn nheo giác	0
+sân khách kiêng khem	0
+bội phần trông ngóng	0
+đậm đặc hát bắc	0
+xuyến nhỡ bước	0
+trẽn kinh nghĩa	0
+rộng nói năng	0
+tụng ca phản gián	0
