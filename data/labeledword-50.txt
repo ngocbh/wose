@@ -1,53 +1,567 @@
-bảo tàng lịch sử	1
-ô nhiễm môi trường	1
-điện thoại di động	1
-động vật hoang dã	1
-lò phản ứng	1
-tiểu hành tinh	1
-nhiễm sắc thể	1
-mối quan hệ	1
-mối liên hệ	1
-kính thiên văn	1
-tâm lý học	1
-vận động	1
-vận động viên	1
-sinh vật học	1
-chỉ ra rằng	1
-chứng minh rằng	1
-động thực vật	1
-tàu con thoi	1
-năm ánh sáng	1
-bất cứ ai	1
-khảo cổ học	1
-người ta	1
-người đàn ông	1
-chúng tôi	1
-sử dụng	1
-cho thấy	1
-quá trình	1
-tương tự	1
-bản thân	1
+thứ hai	1
+dự kiến	1
+không gian	1
+bí ẩn	1
+tham gia	1
+tâm lý	1
+sao kim	1
+khoa học	1
+lãng mạn	1
+tại sao	1
+quan trọng	1
+có thể	1
+hoàn toàn	1
+loài người	1
+nghiên cứu	1
+con cái	1
+thay đổi	1
+nhiệm vụ	1
+gọi là	1
+đại học	1
+xung quanh	1
+xi măng	1
+nói chuyện	1
 khả năng	1
-chúng tôi đã	0
-nhưng các nhà	0
-người ta đã	0
-bất cứ ai cũng	0
-lịch pháp cất giữ	0
-nhiễm môi trường	0
-điện thoại di	0
-quá trình này	0
-tra vấn bớt	0
-phẩm chất lóp	0
-trộm cướp nhặm	0
-quế võ nguyện ước	0
-khấn vái cười khẩy	0
-nhăn nheo giác	0
-sân khách kiêng khem	0
-bội phần trông ngóng	0
-đậm đặc hát bắc	0
-về bản thân	0
-tương tự như	0
-cũng cho thấy	0
-sử dụng một	0
-sử dụng các	0
-về khả năng 0
+quỹ đạo	1
+sao chổi	1
+điều kiện	1
+thế giới	1
+tác dụng	1
+người ta	1
+đảm bảo	1
+tổ chức	1
+không thể	1
+thực hiện	1
+kim loại	1
+thậm chí	1
+ngôn ngữ	1
+xây dựng	1
+xử lý	1
+tất cả	1
+vì vậy	1
+như không	1
+nhất là	1
+ít nhất	1
+thằn lằn	1
+hoang dã	1
+kiểm tra	1
+anh chàng	1
+hiện tại	1
+cơ thể	1
+nhà khoa học	1
+không bao giờ	1
+môi trường	1
+đầu tiên	1
+làm việc	1
+nam giới	1
+chúng tôi	1
+chắc chắn	1
+hầu như	1
+bao gồm	1
+thần kinh	1
+những ai	1
+dự án	1
+máy điện	1
+hành động	1
+một cách	1
+con người	1
+tuy nhiên	1
+ngôi sao	1
+như thế nào	1
+chẳng hạn	1
+khai quật	1
+bổ sung	1
+tiết kiệm	1
+tư duy	1
+thức ăn	1
+vào khoảng	1
+công nghệ	1
+kế hoạch	1
+phát hiện	1
+quan sát	1
+kỷ lục	1
+áp lực	1
+một số	1
+thời gian	1
+hỗ trợ	1
+sinh học	1
+khổng lồ	1
+giao thông	1
+trách nhiệm	1
+hầu hết	1
+bao nhiêu	1
+tác động	1
+tìm hiểu	1
+nhà nghiên cứu	1
+có nghĩa	1
+tuyệt chủng	1
+hạnh phúc	1
+kết quả	1
+bảo tồn	1
+sử dụng	1
+thông điệp	1
+kích thước	1
+quản lý	1
+thế nào	1
+cung cấp	1
+đàn ông	1
+mặt trời	1
+quyến rũ	1
+chế độ	1
+ô nhiễm	1
+lo lắng	1
+bề mặt	1
+kết hôn	1
+phức tạp	1
+thay thế	1
+thực sự	1
+nhà khảo cổ	1
+xuất hiện	1
+cảnh báo	1
+liên tục	1
+cộng sự	1
+ý tưởng	1
+tấn công	1
+dụng công	1
+thiết bị	1
+kỹ sư	1
+căng thẳng	1
+có mặt	1
+giám đốc	1
+vì thế	1
+lĩnh vực	1
+cấu trúc	1
+phát triển	1
+thì có	1
+thiên văn	1
+phụ nữ	1
+đối với	1
+nhà máy	1
+vũ trụ	1
+giải pháp	1
+ủng hộ	1
+mục tiêu	1
+tỷ lệ	1
+chúng ta	1
+nghệ thuật	1
+bình thường	1
+trả lời	1
+sẵn sàng	1
+động vật	1
+năng lượng	1
+tổng hợp	1
+có lẽ	1
+kỹ thuật	1
+dường như	1
+suy giảm	1
+công bố	1
+yếu tố	1
+khuôn mặt	1
+nghĩa là	1
+giai đoạn	1
+vai trò	1
+thành phố	1
+công trình	1
+ngạc nhiên	1
+vận động viên	1
+bộ phận	1
+phỏng đoán	1
+xã hội	1
+thế kỷ	1
+lịch sử	1
+công ty	1
+thăm dò	1
+chứng minh	1
+nhân vật	1
+nhiệt độ	1
+giới tính	1
+quần thể	1
+dễ dàng	1
+đặc biệt	1
+con số	1
+quan hệ	1
+số lượng	1
+thiên thể	1
+thông tin	1
+khó khăn	1
+nếu như	1
+chuẩn bị	1
+khủng long	1
+toàn bộ	1
+theo dõi	1
+phục vụ	1
+thử nghiệm	1
+xem xét	1
+thời kỳ	1
+lắng nghe	1
+kích cỡ	1
+tiếp tục	1
+yêu cầu	1
+hiệu ứng	1
+phải mất	0
+tại khu	0
+sinh con	0
+ra ở	0
+e mail	0
+tp hcm	0
+cho biết	0
+nhà nghiên cứu cho biết	0
+tro hài	0
+này là	0
+cho ra	0
+một công	0
+nền kinh tế	0
+kết hợp với	0
+cho rằng	0
+lần đầu tiên	0
+tia laser	0
+năng làm	0
+ra và	0
+sau năm	0
+của nữ	0
+tại đại	0
+hệ mặt	0
+speedy deck	0
+thu nhỏ	0
+sinh ra	0
+cặp vợ chồng	0
+và phát triển	0
+ra một	0
+mới có thể	0
+nhà nghiên	0
+một anh chàng	0
+các nhà	0
+tìm ra	0
+ở việt nam	0
+này có	0
+bất cứ ai	0
+của họ	0
+con chim	0
+new york	0
+đầu và	0
+triệu năm trước	0
+so với	0
+giết chết	0
+là một	0
+cách nào	0
+sau khi	0
+một trong hai	0
+là ở	0
+ra sao	0
+ra trong	0
+ra như	0
+sao cho	0
+cho một	0
+thoại di	0
+vẫn không	0
+ở tuổi	0
+hơn nhiều	0
+cô gái	0
+rất nhiều	0
+mối quan	0
+bạn sẽ	0
+con voi	0
+của những	0
+chúng ta đã	0
+có thể nhìn	0
+trong khi	0
+ban nha	0
+của chúng	0
+phải là	0
+hai con	0
+để tạo	0
+tới nay	0
+ma túy	0
+mối quan hệ	0
+thoát khỏi	0
+mà họ	0
+tạo nên	0
+một lần	0
+tại đại học	0
+trong các	0
+nhà nghiên cứu đã	0
+tây ban	0
+là để	0
+từ năm đến	0
+cơ quan vũ	0
+vào năm	0
+tin về	0
+mà thôi	0
+khi chúng	0
+giống như	0
+nhận ra	0
+không có	0
+nếu có ở ngón	0
+có các	0
+đó là	0
+có rất	0
+một trong những	0
+vai trò của	0
+những điều	0
+một người đàn ông	0
+những biến	0
+trường đại	0
+các nhà khoa học	0
+kiệm năng lượng	0
+hy vọng sẽ	0
+có một số	0
+khi được	0
+săn mồi	0
+thể là	0
+giông sét	0
+khác nhau	0
+thuộc đại học	0
+của chim	0
+ta có thể	0
+khi mà	0
+ở nhiệt độ	0
+trung hoa	0
+rắn mang bành	0
+nền văn	0
+các nhà nghiên	0
+sức khỏe	0
+đầm lầy	0
+trong hai	0
+năm trước	0
+nghiên cứu của	0
+của nó	0
+với những người	0
+trong những	0
+trên trái	0
+một ngôi sao	0
+sẽ được	0
+đóng vai	0
+bên cạnh	0
+đất tẩy	0
+các chuyên gia	0
+bản báo cáo	0
+trên thế giới	0
+còn có	0
+không phải là	0
+đã tìm thấy	0
+với người	0
+có thể là một	0
+sẽ làm	0
+học tại đại học	0
+chứ không	0
+của mình	0
+tâm của	0
+người ta có	0
+bên trong	0
+bảo tàng lịch	0
+cứu khoa học	0
+cụt hoàng đế	0
+những người	0
+đã phát	0
+thiên đồ	0
+mang theo	0
+không bị	0
+sau đó	0
+mang lại	0
+cánh cụt	0
+người có thể	0
+ra khi	0
+rất tốt	0
+nằm ở	0
+của người	0
+tốt hơn	0
+hậu quả của	0
+kết quả nghiên	0
+sự là một	0
+năm qua	0
+cũng không	0
+gần đây	0
+thể của	0
+đe dọa	0
+hoóc môn	0
+đối với những	0
+có khả năng	0
+ở new	0
+nhà khoa	0
+không có gì	0
+nhà du hành	0
+các nhà khoa học đã	0
+tạo ra	0
+nó có	0
+bằng đá	0
+được tìm thấy trong	0
+có thể là	0
+không phải	0
+vào thế kỷ	0
+chỉ ra rằng	0
+ngành công nghiệp	0
+mùa hè	0
+mà vẫn	0
+sự tương đồng	0
+tên là	0
+hệ thống này	0
+các thiết	0
+đóng vai trò	0
+vật hoang	0
+vẫn chưa	0
+luân xa	0
+đây là lần đầu tiên	0
+tìm thấy một	0
+là lần đầu	0
+và người	0
+màu đỏ	0
+làm thế nào	0
+của một	0
+loài động vật	0
+là sản phẩm của	0
+có thể làm	0
+nếu có ở	0
+đây là	0
+này vào	0
+giống như một	0
+sống và	0
+mà không cần	0
+tượng này	0
+chỉ có	0
+là những người	0
+trong giai	0
+đó được	0
+nghiên cứu tại đại	0
+sống của	0
+bức tường	0
+chứ không phải	0
+của sự	0
+lại có	0
+gửi đi	0
+những con	0
+có xu	0
+những người có	0
+một phương	0
+về phía	0
+của một người	0
+nhiều thời gian	0
+và các	0
+của các	0
+học mỹ	0
+bạn tình	0
+trong gia	0
+trải qua	0
+năm trước công nguyên	0
+biến mất	0
+ăn thịt	0
+ở những	0
+có nghĩa là	0
+lúc nào cũng	0
+đối mặt với	0
+nhanh hơn	0
+lên một	0
+có thể tạo ra	0
+nhau trong	0
+bầu khí quyển	0
+chỉ là một	0
+chẳng có gì	0
+được một	0
+mà không	0
+nghiên cứu đã	0
+nhóm nghiên cứu	0
+này còn	0
+năm trước công	0
+nhà khoa học tin rằng	0
+tìm thấy ở	0
+bức ảnh	0
+tìm thấy	0
+nhiều so với	0
+trước công nguyên	0
+nhất thế giới	0
+sao hỏa	0
+tro hài cốt	0
+dẫn tới	0
+lặp lại	0
+trong đó có	0
+với một	0
+khi con	0
+của cơ	0
+này có thể	0
+cho người	0
+thêm nhiều	0
+với nhau	0
+hàng chục	0
+tẩy màu	0
+nhóm nghiên	0
+trong một thời	0
+nhiều năm	0
+trung thiên đồ	0
+với các	0
+này được	0
+tại bảo tàng	0
+căn cứ vào	0
+đã tạo ra	0
+vân tay	0
+một điều	0
+chịu trách	0
+làm thế nào để	0
+theo các	0
+hơn so với	0
+đến một	0
+nhiều người	0
+lực hấp dẫn	0
+đã chứng	0
+cũng cho biết	0
+chứng minh rằng	0
+thể cho	0
+được gọi là	0
+và cho	0
+có ở ngón	0
+nữ có	0
+tảng đá	0
+nếu bạn muốn	0
+trong trường	0
+để đánh	0
+phía trước	0
+nghìn năm	0
+đặc biệt là	0
+đã biết	0
+nhưng nó	0
+nhìn thấy	0
+vượt qua	0
+cần phải	0
+từ các	0
+được sử dụng	0
+của loài người	0
+khoảng triệu	0
+mỗi lần	0
+điều này	0
+nhìn vào	0
+nếu bạn	0
+trong một thời gian	0
+chịu trách nhiệm	0
+đó là một	0
+lực của	0
+đó chỉ	0
+chúng là	0
+của nhà	0
+làm mưa nhân tạo	0
+trên thế	0
+xảy ra	0
+là một trong những	0
+biết rằng	0
+và đàn	0
+có thể đã	0
+cho thấy	0
+viện nghiên cứu	0
+đã được	0
+đất tẩy màu	0
+lúc đó	0
+dễ bị	0
+đã có một	0
+một hành tinh	0
+các nhà nghiên cứu đã	0
+được cho là	0
+để có	0
+cũng có thể	0
+gì đó	0
+tạo ra một	0
+nhiều nhà khoa học	0
+dấu vân tay	0
+đám mây	0
+của bạn	0
+cuộc sống tình	0
+trong một	0
+bằng cách	0
+ra từ	0
+những vật	0

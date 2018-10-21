@@ -7,11 +7,11 @@ if type "pypy" > /dev/null; then
 fi
 
 RAW_TEXT='data/raw-corpus.txt'
-AUTO_LABEL=0
+AUTO_LABEL=1
 WORDNET_NOUN=0
 DATA_LABEL='data/labeledword.txt'
-KNOWLEDGE_BASE='data/wiki_labels_quality.txt'
-KNOWLEDGE_BASE_LARGE='data/wiki_labels_all.txt'
+KNOWLEDGE_BASE='data/WordList41K.txt'
+KNOWLEDGE_BASE_LARGE='data/WordList74K.txt'
 
 STOPWORD_LIST='data/stopwords.txt'
 SUPPORT_THRESHOLD=10

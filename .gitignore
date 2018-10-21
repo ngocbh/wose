@@ -3,3 +3,4 @@ data/raw-corpus.txt
 bin/*
 tmp/*
 results/*
+results_from_server/*

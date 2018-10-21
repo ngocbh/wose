@@ -1,4 +1,4 @@
-import sys
+import sys, codecs
 from random import shuffle
 from math import sqrt
 from sklearn import cluster
@@ -42,18 +42,18 @@ def normalize(word):
     return ' '.join(word.split())
 
 groundtruth = {}
-for line in open(knowledge_base, 'r'):
+for line in codecs.open(knowledge_base,encoding='utf8',mode='r',errors='ignore'):
     word = line.strip()
     #word = normalize(word)
     groundtruth[word] = True
 kb_phrases_all= set()
-for line in open(knowledge_base_large, 'r'):
+for line in codecs.open(knowledge_base_large,encoding='utf8',mode='r',errors='ignore'):
     word = line.strip()
     word = normalize(word)
     kb_phrases_all.add(word) 
 
 patterns_support = list()
-for line in open(patterns, 'r'):
+for line in codecs.open(patterns,encoding='utf8',mode='r',errors='ignore'):
     tokens = line.split(',')
     patterns_support.append((tokens[0].strip(), int(tokens[1])))
 sorted_patterns = sorted(patterns_support, key=lambda tup: -tup[1])
@@ -67,7 +67,7 @@ matrixWiki = []
 phraseWiki = []
 matrixOther = []
 phraseOther = []
-for line in open(feature_table, 'r'):
+for line in codecs.open(feature_table,encoding='utf8',mode='r',errors='ignore'):
     tokens = line.split(',')
     if tokens[0] == 'pattern':
         attributes = tokens
@@ -126,7 +126,7 @@ for bin in bins:
                 labels.append(bin[i] + '\t0\n')
                 break
         
-out = open(generated_label, 'w')
+out = codecs.open(generated_label,encoding='utf8',mode='w',errors='ignore')
 out.write(''.join(labels))
 out.close()
 

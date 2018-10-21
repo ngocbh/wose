@@ -8,7 +8,7 @@ fi
 
 RAW_TEXT='data/raw-corpus-5K.txt'
 RAW_TEXT_TEST='data/raw-corpus-1.txt'
-AUTO_LABEL=0
+AUTO_LABEL=1
 WORDNET_NOUN=0
 DATA_LABEL='data/labeledword-50.txt'
 KNOWLEDGE_BASE='data/wiki_labels_quality.txt'
