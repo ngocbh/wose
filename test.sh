@@ -1,8 +1,10 @@
 #!/bin/bash
 
 make
-./train_toy.sh 
+./parse.sh
+# ./bin/test_parser results_from_server/results/segmentation.model 
 exit
+
 
 export PYTHON=python
 export PYPY=python

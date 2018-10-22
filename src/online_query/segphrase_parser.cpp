@@ -2,7 +2,7 @@
 
 const string ENDINGS = ".!?,;:[]";
 
-string sep = "[]";
+string sep = "_";
 
 void printVector(vector<string> a) {
     for (size_t i = 0; i < a.size(); ++ i) {
@@ -23,6 +23,42 @@ void printVector(vector<string> a) {
         }
     }
 }
+
+string reFormat(vector<string> a) {
+    string res = "";
+
+    for (size_t i = 0; i < a.size(); ++ i) {
+        if (sep == "_") {
+            for (size_t j = 0; j < a[i].size(); ++ j) {
+                if (a[i][j] == ' ') {
+                    a[i][j] = '_';
+                }
+            }
+        } else {
+            a[i] = "[" + a[i] + "]";
+        }
+        res += a[i];
+        if (i + 1 == a.size()) {
+            res += '\n';
+        } else {
+            res += " ";
+        }
+    }
+    return res;
+}
+
+template<class T>
+void printVectorRaw(vector<T> a) {
+    for (size_t i = 0; i < a.size(); ++ i) {
+        cerr << a[i];
+        if (i + 1 == a.size()) {
+            cerr << endl;
+        } else {
+            cerr << ", ";
+        }
+    }
+}
+
 
 unordered_set<string> dict;
 
@@ -147,6 +183,7 @@ int main(int argc, char* argv[])
             if (ENDINGS.find(ch) != -1) {
                 if (sentence.size() > 0) {
                     sentences.push_back(sentence);
+                    // cout << sentence << endl;
                     betweens.push_back(string(1, ch));
                 } else {
                     betweens.back() += ch;
@@ -156,8 +193,10 @@ int main(int argc, char* argv[])
                 sentence += ch;
             }
         }
+
         if (sentence.size() > 0) {
             sentences.push_back(sentence);
+            // cout << sentence << endl;
         }
         string corpus = "";
         if (!clean_mode) {
@@ -170,15 +209,21 @@ int main(int argc, char* argv[])
             for (size_t i = 0; i < text.size(); ++ i) {
                 if (isalpha(text[i])) {
                     text[i] = tolower(text[i]);
-                } else if (text[i] != '\'') {
+                } else if (ENDINGS.find(text[i]) != -1) {
                     text[i] = ' ';
                 }
             }
+
             vector<pair<string, bool>> segments = parser->segment(text);
-            string answer = translate(segments, clean_mode, origin, text, betweens, index);
-            corpus += answer;
+            vector<string> tmp;
+            for (int i = 0; i < segments.size(); i++) tmp.push_back(segments[i].first);
+            
+            // printVector(tmp);
+
+            // string answer = translate(segments, clean_mode, origin, text, betweens, index);
+            corpus += reFormat(tmp);
         }
-        fprintf(out, "%s\n", corpus.c_str());
+        fprintf(out, "%s", corpus.c_str());
     }
 
     cerr << "[done]" << endl;

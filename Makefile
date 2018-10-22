@@ -3,7 +3,7 @@ export CC  = gcc-8
 export CXX = g++-8
 export CFLAGS = -std=c++11 -Wall -O3 -msse2  -fopenmp  -I..
 
-BIN = ./bin/from_raw_to_binary ./bin/from_raw_to_binary_text ./bin/feature_extraction ./bin/predict_quality ./bin/adjust_probability ./bin/recompute_features ./bin/prune_and_combine ./bin/build_model ./bin/qualify_unigrams ./bin/segphrase_parser ./bin/generateNN ./bin/combine_phrases
+BIN = ./bin/from_raw_to_binary ./bin/from_raw_to_binary_text ./bin/feature_extraction ./bin/predict_quality ./bin/adjust_probability ./bin/recompute_features ./bin/prune_and_combine ./bin/build_model ./bin/qualify_unigrams ./bin/segphrase_parser ./bin/generateNN ./bin/combine_phrases ./bin/test_parser
 .PHONY: clean all
 
 all: ./bin $(BIN)
@@ -20,6 +20,7 @@ all: ./bin $(BIN)
 ./bin/segphrase_parser: ./src/online_query/segphrase_parser.cpp ./src/utils/helper.h ./src/online_query/segphrase_parser.h
 ./bin/generateNN: ./src/postprocessing/generateNN.cpp ./src/utils/helper.h ./src/postprocessing/kd_tree.h
 ./bin/combine_phrases: ./src/postprocessing/combine_phrases.cpp ./src/utils/helper.h
+./bin/test_parser: ./src/online_query/test_parser.cpp ./src/utils/helper.h ./src/online_query/segphrase_parser.h
 
 ./bin:
 	mkdir bin

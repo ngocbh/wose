@@ -32,9 +32,9 @@ mkdir results
 
 if [ ! -e data/raw-corpus.txt ]; then
 	echo ===Downloading dataset=== 
-	curl https://doc-00-5s-docs.googleusercontent.com/docs/securesc/1phglkvgmj9fgs431e487iug5ratnnob/7ab4fdl4v3ohlf4h2n7pbpl0re6op6ik/1540022400000/14422831102025353590/14422831102025353590/131KC1FuZc4th0ztTcJ251tWRNtEfPegK?e=download&h=02302118062247790148&nonce=43eeolikpnvai&user=14422831102025353590&hash=jh9boo5p8djps7kq4ve3c0hlpe97af7q --output data/raw-corpus.txt
+	curl https://s3.ap-southeast-1.amazonaws.com/ngocjr/raw-corpus.txt.gz --output data/raw-corpus.txt
 #	wget http://dmserv4.cs.illinois.edu/DBLP.txt.gz -O data/DBLP.txt.gz
-#    gzip -d data/DBLP.txt.gz -f
+    gzip -d data/DBLP.txt.gz -f
 fi
 
 # preprocessing

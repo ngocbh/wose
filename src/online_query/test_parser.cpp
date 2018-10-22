@@ -23,15 +23,21 @@ int main(int argc, char* argv[])
     SegPhraseParser* parser = new SegPhraseParser(model_path, 0);
     cerr << "parser built." << endl;
     
-    vector<string> segments = parser->segment("data mining is an area");
+    vector<pair<string,bool>> tmp = parser->segment("data mining is an area");
+    vector<string> segments;
+    for (int i = 0; i < tmp.size(); i++) segments.push_back(tmp[i].first);
+
     printVector(segments);
-    
+
     cerr << "Please type in a sentence in a single line (or exit()):" << endl;
     while (getLine(stdin)) {
         if (strcmp(line, "exit()") == 0) {
             break;
         }
-        segments = parser->segment(line);
+        segments.clear();
+        tmp = parser->segment(line);
+        for (int i = 0; i < tmp.size(); i++) segments.push_back(tmp[i].first);
+        
         cerr << "[Segmentation Result]" << endl;
         printVector(segments);
         cerr << "\nPlease type in a sentence in a single line (or exit()):" << endl;
