@@ -1,0 +1,78 @@
+======================New Evalution================
+==========>threshold = 0.0 =========
+inDictPos = 1381 
+inDict = 1381 
+positive prediction = 1860 
+precision = 0.74247 
+recall = 1.00000 
+
+==========>threshold = 0.1 =========
+inDictPos = 1381 
+inDict = 1381 
+positive prediction = 1640 
+precision = 0.84207 
+recall = 1.00000 
+
+==========>threshold = 0.2 =========
+inDictPos = 1381 
+inDict = 1381 
+positive prediction = 1580 
+precision = 0.87405 
+recall = 1.00000 
+
+==========>threshold = 0.3 =========
+inDictPos = 1254 
+inDict = 1381 
+positive prediction = 1414 
+precision = 0.88685 
+recall = 0.90804 
+
+==========>threshold = 0.4 =========
+inDictPos = 1109 
+inDict = 1381 
+positive prediction = 1217 
+precision = 0.91126 
+recall = 0.80304 
+
+==========>threshold = 0.5 =========
+inDictPos = 1092 
+inDict = 1381 
+positive prediction = 1188 
+precision = 0.91919 
+recall = 0.79073 
+
+==========>threshold = 0.6 =========
+inDictPos = 1079 
+inDict = 1381 
+positive prediction = 1161 
+precision = 0.92937 
+recall = 0.78132 
+
+==========>threshold = 0.7 =========
+inDictPos = 1054 
+inDict = 1381 
+positive prediction = 1126 
+precision = 0.93606 
+recall = 0.76322 
+
+==========>threshold = 0.8 =========
+inDictPos = 278 
+inDict = 1381 
+positive prediction = 289 
+precision = 0.96194 
+recall = 0.20130 
+
+==========>threshold = 0.9 =========
+inDictPos = 210 
+inDict = 1381 
+positive prediction = 214 
+precision = 0.98131 
+recall = 0.15206 
+
+==========>threshold = 1.0 =========
+inDictPos = 0 
+inDict = 1381 
+positive prediction = 0 
+precision = 1.0
+recall = 0.00000 
+
