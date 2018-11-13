@@ -5,11 +5,8 @@ import re
 import argparse
 import sys, codecs, os
 
-reload(sys)  
-sys.setdefaultencoding('utf8')
-
-PUNCTUATIONS = "//!!¡!(())--{{}}[[]]'::;;<<>>??¿?؟?..,,،‎,؍‎,«<»>—-‘’‚,“”„•-\"=+*"
-DELEMITERS= ' | \.|\. |\.\.|\,\,|, | ,|\[|\]|\(|\)|\!|\/|\{|\}|\?|\:|\;|\-|\<|\>|\"|\'|\=|\*|\+'
+PUNCTUATIONS = u"//!!¡!(())--{{}}[[]]'::;;<<>>??¿?؟?..,,،‎,؍‎,«<»>—-‘’‚,“”„•-\"=+*"
+DELEMITERS= u' | \.|\. |\.\.|\,\,|, | ,|\[|\]|\(|\)|\!|\/|\{|\}|\?|\:|\;|\-|\<|\>|\"|\'|\=|\*|\+'
 
 def nomalize(token):
 	separator_after = 0
@@ -30,19 +27,19 @@ def nomalize(token):
 
 def isDigital(token):
 	for char in token:
-		if ( char >= '0' and char <= '9' ):
+		if ( char >= u'0' and char <= u'9' ):
 			return 1;
 	return 0;
 
 def getFileBaseName(input,outdir,outbase):
 	if ( outdir[len(outdir)-1] != '/' ):
-		outdir += '/'
-	if outbase != '':
+		outdir += u'/'
+	if outbase != u'':
 		return outdir,outbase
-	lastDot = input.rfind('.')
+	lastDot = input.rfind(u'.')
 	if lastDot == -1:
 		lastDot = len(args.input)
-	lastDash = input.rfind('/')
+	lastDash = input.rfind(u'/')
 	return input[:lastDash+1],input[lastDash+1:lastDot]
 
 def setBit(mask,index,value):
@@ -72,7 +69,7 @@ def extractShapeFeatures(token, ptoken, separator_before, separator_after):
 		else:
 			mask = setBit(mask,1,1)
 	#BIT 2-nd bit: any delemiter inside of this token?
-	if (ptoken[len(ptoken)-1] == '-'):
+	if (ptoken[len(ptoken)-1] == u'-'):
 		mask = setBit(mask,2,1)
 	else:
 		mask = setBit(mask,2,0)
@@ -87,22 +84,22 @@ def extractShapeFeatures(token, ptoken, separator_before, separator_after):
 	else: 
 		mask = setBit(mask,4,0)
 	#BIT 5-rd bit: any " before this token?
-	if (ptoken[0] == '"'):
+	if (ptoken[0] == u'"'):
 		mask = setBit(mask,5,1)
 	else: 
 		mask = setBit(mask,5,0)
 	#BIT 6-rd bit: any " after this token?
-	if (ptoken[len(ptoken)-1] == '"'):
+	if (ptoken[len(ptoken)-1] == u'"'):
 		mask = setBit(mask,6,1)
 	else: 
 		mask = setBit(mask,6,0)
 	#BIT 7-rd bit: any ( before this token?
-	if (ptoken[0] == '('):
+	if (ptoken[0] == u'('):
 		mask = setBit(mask,7,1)
 	else: 
 		mask = setBit(mask,7,0)
 	#BIT 8-rd bit: any ) after this token?
-	if (ptoken[len(ptoken)-1] == ')'):
+	if (ptoken[len(ptoken)-1] == u')'):
 		mask = setBit(mask,8,1)
 	else: 
 		mask = setBit(mask,8,0)
@@ -182,7 +179,7 @@ def map(args):
 								nWord += 1
 								words[lower_token] = nWord
 								words_additional[lower_token] = nWord
-							tcout.write(str(words[lower_token]) + ' ')
+							tcout.write(str(words[lower_token]) + u' ')
 					wpout.write('\n')
 					tcout.write('\n')
 					if ( args.extract == 'yes' ):
