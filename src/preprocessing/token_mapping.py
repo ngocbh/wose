@@ -132,7 +132,9 @@ def map(args):
 		lines = data.split('\n')
 		for line in lines: 
 			word_map = line.split('\t')
-			if ( len(word_map) >= 2 ):
+			if ( len(word_map) < 2 ):
+				continue
+			if ( word_map[0] != '' and word_map[1] != '' ):
 				words[word_map[0]] = int(word_map[1])
 				nWord = max(nWord,int(word_map[1]))
 
@@ -173,6 +175,8 @@ def map(args):
 							if ( args.extract == 'yes' ):
 								spout.write(str(extractShapeFeatures(token,ptoken,(separator_before == 1),((separator_after==1) or (index == len(ptokens))) )) + ' ')
 							lower_token = token.lower()
+							if ( lower_token == '' ):
+								continue
 							wpout.write(token + ' ')
 							if lower_token not in words:
 								nWord += 1
