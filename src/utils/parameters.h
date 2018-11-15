@@ -27,6 +27,8 @@ string SEGMENTATION_MODEL = "";
 int MIN_SUP = 30;
 int MAX_LEN = 6;
 int MAX_POSITIVE = -1;
+int DISCARD = 0.05;
+int ITERATIONS = 2;
 
 bool INTERMEDIATE = true;
 
@@ -38,5 +40,4 @@ string QUALITY_WORD_FILE = "tmp/tokenized_quality_words.txt";
 string TOKEN_MAPPING_FILE = "tmp/token_mapping.txt";
 string LABEL_FILE = "tmp/tokenized_labeled_words.txt";
 string LABEL_METHOD = ""; // E: Expert label , D: Distant training , P: Positive, N: Negative 
-
 #endif 

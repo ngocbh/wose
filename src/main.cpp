@@ -9,6 +9,7 @@
 #include "classification/label_generation.h" 
 #include "utils/random.h"
 #include "classification/predict_quality.h"
+#include "segmentation/segmentation.h"
 using namespace std;
 
 using FrequentPatternMining::Pattern;
@@ -67,15 +68,103 @@ int main(int argc, char* argv[])
     }
 
     TOTAL_TOKENS_TYPE recognized = Features::recognize(truth);
-    // estimate
-    cerr << "Estimating Phrase Quality..." << endl;
-    predictQuality(patterns, features, featureNames);
-    predictQualityUnigram(patterns, featuresUnigram, featureNamesUnigram);
 
-    if (INTERMEDIATE) {
-        char filename[256];
-        sprintf(filename, "tmp/iter_0_quality" );
-        Dump::dumpResults(filename);
+    // SegPhrase, +, ++, +++, ...
+    for (int iteration = 0; iteration < ITERATIONS; ++ iteration) {
+        if (INTERMEDIATE) {
+            fprintf(stderr, "Feature Matrix = %d X %d\n", features.size(), features.back().size());
+        }
+        cerr << "Estimating Phrase Quality..." << endl;
+        predictQuality(patterns, features, featureNames);
+        predictQualityUnigram(patterns, featuresUnigram, featureNamesUnigram);
+
+        // build trie to query pattern and its label ( pattern and truth-pattern )
+        constructTrie(); // update the current frequent enough patterns
+
+        // check the quality
+        if (INTERMEDIATE) {
+            char filename[256];
+            sprintf(filename, "tmp/iter_%d_quality", iteration);
+            Dump::dumpResults(filename);
+        }
+
+        cerr << "Segmenting..." << endl;
+        if (true) {
+            if (INTERMEDIATE) {
+                cerr << "[Length Penalty Mode]" << endl;
+            }
+            double penalty = EPS;
+            if (true) {
+                // Binary Search for Length Penalty
+                double lower = EPS, upper = 200;
+                for (int _ = 0; _ < 10; ++ _) {
+                    penalty = (lower + upper) / 2;
+                    // calculate probability to to segment each pattern to 1 part
+                    Segmentation segmentation(penalty);
+                    segmentation.rectifyFrequency(Documents::sentences);
+                    double wrong = 0, total = 0;
+                    for (int i = 0; i < truth.size(); ++ i) {
+                        if (truth[i].label == 1) {
+                            ++ total;
+                            vector<double> f;//f is dp array
+                            vector<int> pre;//pre is trace array
+                            segmentation.viterbi(truth[i].tokens, f, pre);
+                            wrong += pre[truth[i].tokens.size()] != 0; // if it is decomposed, -> wrong
+                        }
+                    }
+                    if (wrong / total <= DISCARD) {
+                        lower = penalty;
+                    } else {
+                        upper = penalty;
+                    }
+                }
+            }
+            if (INTERMEDIATE) {
+                cerr << "Length Penalty = " << penalty << endl;
+            }
+            // Running Segmentation
+            Segmentation segmentation(penalty);
+            segmentation.rectifyFrequency(Documents::sentences);
+        } 
+
+        if (iteration + 1 < ITERATIONS) {
+            // rectify the features
+            cerr << "Rectifying features..." << endl;
+            Label::removeWrongLabels();
+
+            /*
+            // use number of sentences + rectified frequency to approximate the new idf
+            double docs = Documents::sentences.size() + EPS;
+            double diff = 0;
+            int cnt = 0;
+            for (int i = 0; i < patterns.size(); ++ i) {
+                if (patterns[i].size() == 1) {
+                    const TOKEN_ID_TYPE& token = patterns[i].tokens[0];
+                    TOTAL_TOKENS_TYPE freq = patterns[i].currentFreq;
+                    double newIdf = log(docs / (freq + EPS) + EPS);
+                    diff += abs(newIdf - Documents::idf[token]);
+                    ++ cnt;
+                    Documents::idf[token] = newIdf;
+                }
+            }
+            */
+
+            features = Features::extract(featureNames);
+            featuresUnigram = Features::extractUnigram(featureNamesUnigram);
+        }
+
+        // check the quality
+        if (INTERMEDIATE) {
+            char filename[256];
+            sprintf(filename, "tmp/iter_%d_frequent_quality", iteration);
+            Dump::dumpResults(filename);
+        }
     }
+
+    cerr << "Dumping results..." << endl;
+    Dump::dumpResults("tmp/final_quality");
+    Dump::dumpSegmentationModel("tmp/segmentation.model");
+
+    cerr << "Done." << endl;
 
 } 

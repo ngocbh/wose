@@ -9,7 +9,7 @@ BIN = ./bin/wose_train
 
 all: ./bin $(BIN)
 
-./bin/wose_train: ./src/main.cpp ./src/utils/*.h ./src/data_processing/*.h ./src/classification/*.h ./src/frequent_pattern_mining/*.h
+./bin/wose_train: ./src/main.cpp ./src/utils/*.h ./src/data_processing/*.h ./src/classification/*.h ./src/frequent_pattern_mining/*.h ./src/segmentation/*.h
 
 ./bin:
 	mkdir -p bin
