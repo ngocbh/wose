@@ -16,10 +16,8 @@
 #include <set>
 #include <unordered_map>
 #include <unordered_set>
-#include <unicode/unistr.h>
 
 using namespace std;
-using icu::UnicodeString;
 
 #define FOR(i,a) for (__typeof((a).begin()) i = (a).begin(); i != (a).end(); ++ i)
 
@@ -138,26 +136,6 @@ inline vector<string> splitBy(const string &line, char sep)
 	vector<string> tokens;
 	string token = "";
 	for (size_t i = 0; i < line.size(); ++ i) {
-		if (line[i] == sep) {
-		    if (token != "") {
-    			tokens.push_back(token);
-			}
-			token = "";
-		} else {
-			token += line[i];
-		}
-	}
-	if (token != "") {
-    	tokens.push_back(token);
-	}
-	return tokens;
-}
-
-inline vector<UnicodeString> uSplitBy(const UnicodeString &line,char16_t sep)
-{
-	vector<UnicodeString> tokens;
-	UnicodeString token = "";
-	for (size_t i = 0; i < line.length(); ++ i) {
 		if (line[i] == sep) {
 		    if (token != "") {
     			tokens.push_back(token);

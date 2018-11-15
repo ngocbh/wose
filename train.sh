@@ -28,11 +28,10 @@ TOKENIZED_STOPWORD="tmp/tokenized_stopwords.txt"
 TOKENIZED_QUALITY_WORD="tmp/tokenized_quality_words.txt"
 TOKENIZED_ALL_WORD="tmp/tokenized_all_words.txt"
 
-# rm -r tmp
-mkdir -p tmp
-
 if [ ${PREPROCESSING} -eq 1 ] 
 then 
+	rm -r tmp
+	mkdir -p tmp
 	echo ${green}===BEGIN===Mapping raw corpus===${reset}
 	time ${PYTHON} src/preprocessing/token_mapping.py --mode map \
 												 --input ${RAW_CORPUS} \

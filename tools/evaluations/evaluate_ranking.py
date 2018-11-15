@@ -8,6 +8,13 @@ import sys, codecs, random
 import re
 import dawg
 import argparse
+# to print utf8
+# sys.stdout.buffer.write(word.encode('utf8') + b'\n')
+
+def jointPath(outdir,outbase):
+    if ( outdir[len(outdir)-1] != '/' ):
+        outdir += '/'
+    return outdir + outbase
 
 def main(args):
     inDictPos = [0 for x in range(11)]
@@ -24,7 +31,9 @@ def main(args):
         data = f.read()
         words = data.split('\n');
 
-    out = codecs.open(args.output,encoding='utf8',mode='w+',errors='ignore');
+    out = codecs.open(jointPath(args.outdir,args.outbase),encoding='utf8',mode='w+',errors='ignore');
+    mis = codecs.open(jointPath(args.outdir,"miss_words.txt"),encoding='utf8',mode='w+',errors='ignore');
+    new = codecs.open(jointPath(args.outdir,"new_words.txt"),encoding='utf8',mode='w+',errors='ignore');
     # build dafsa (automaton) for dictionary
     dafsa = dawg.DAWG(words)
 
@@ -43,11 +52,15 @@ def main(args):
 
             word = str(word)
             if word in dafsa:
+                if ( rank < args.threshold ):
+                    mis.write(word + '\n')
                 for threshold in range(11):
                     inDictNeg[threshold] += (rank < threshold/10.0)
                     inDictPos[threshold] += (rank >= threshold/10.0)
                     inDict[threshold] += 1
             else:
+                if ( rank >= args.threshold ):
+                    new.write(word + '\n')
                 for threshold in range(11):
                     outDictNeg[threshold] += (rank < threshold/10.0)
                     outDictPos[threshold] += (rank >= threshold/10.0)
@@ -79,7 +92,9 @@ def parse_arguments(argv):
     parser = argparse.ArgumentParser()
     parser.add_argument('--dict', type=str, help='dictionary',default='dictionary.txt')
     parser.add_argument('--rank', type=str, help='ranking file',default='ranking.txt')
-    parser.add_argument('--output', type=str, help='output file',default='ranking_log.txt')
+    parser.add_argument('--threshold', type=float, help='threshold to extract new words',default='experiment/')
+    parser.add_argument('--outbase', type=str, help='output base file',default='ranking_log.txt')
+    parser.add_argument('--outdir', type=str, help='output dir',default='experiment/')
     return parser.parse_args(argv)
 
 if __name__ == "__main__":

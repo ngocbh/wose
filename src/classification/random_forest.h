@@ -30,12 +30,13 @@ inline double binaryEntropy(int p1, int total)
 }
 
 inline double calculateLoss(const vector<int> IDs, const vector<double> &labels)
-{
+{   
     if (TASK_TYPE == CLASSIFICATION) {
         // entropy
         unordered_map<int, int> hist;
         FOR (id, IDs) {
             ++ hist[(int)labels[*id]];
+
         }
         double entropy = 0;
         FOR (iter, hist) {
@@ -181,6 +182,7 @@ public:
 
             myAssert(bag.size() > 0, "[ERROR] empty node in decision tree!");
 
+            //kiểm tra nếu mọi nút trong bag có phải là 'pure' hay không? 
             bool equal = true;
             double first = results[bag[0]];
             for (int i = 1; i < (int)bag.size(); ++ i) {
@@ -190,6 +192,9 @@ public:
                 }
             }
 
+            // nếu nút hiện tại là 'pure' hoặc bag chứa ít phần tử hơn cho phép hoặc cây quá sâu 
+            // thì ko tách nữa, đánh đấu nút hiện tại là lá. 
+            // dán nhán kết quả (ranking) của mọi nút trong node là trung bình nhãn của các nút còn lại trong node
             if (equal || (int)bag.size() < minNodeSize * 2 || node.level >= maxLevel) {
                 // leaf
                 node.leaf = true;
@@ -202,8 +207,12 @@ public:
 
             myAssert(bag.size() >= minNodeSize, "[ERROR] bag is too small!");
 
+            //calculate loss by mean cube error
             double bagLoss = calculateLoss(bag, results);
 
+            // chọn ngẫu nhiên ra 1 feature, và chọn ngẫu nhiên ra 1 sample trong bagNode. 
+            // lấy giá trị của feature đó để làm threshold chia ngẫu nhiên ra làm 2 node con
+            // chọn ra cách đem lại kết quả tốt nhất -> random RAMDOM_FEATURES*RANDOM_POSITIONS lần
             int bestFeature = -1;
             int bestLeft = 0, bestRight = 0;
             double bestValue = 0;

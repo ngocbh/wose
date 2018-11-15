@@ -78,7 +78,7 @@ namespace Features
         } else {
             feature.push_back(0);
         }
-        if (Documents::stopwords.count(pattern.tokens.back()) != 0) { // || Documents::isDigital[pattern.tokens.back()]);)
+        if (Documents::stopwords.count(pattern.tokens.back()) != 0 || Documents::isDigital[pattern.tokens.back()]) {
             feature.push_back(1);
         } else {
             feature.push_back(0);
@@ -195,6 +195,7 @@ namespace Features
             TOTAL_TOKENS_TYPE st = ed - patterns[id].size() + 1;
             assert(Documents::wordTokens[st] == patterns[id].tokens[0]);
 
+            //find the sentence contain this pattern st -> ed
             for (TOTAL_TOKENS_TYPE sentences = 0; st >= 0 && sentences < 2; -- st) {
                 if (Documents::isEndOfSentence(st - 1)) {
                     ++ sentences;
