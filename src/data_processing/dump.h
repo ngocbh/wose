@@ -6,7 +6,7 @@
 #include "../utils/utils.h"
 #include "../frequent_pattern_mining/frequent_pattern_mining.h"
 #include "../data_processing/documents.h"
-
+#include "../segmentation/segmentation.h"
 namespace Dump
 {
 
@@ -16,6 +16,67 @@ using FrequentPatternMining::pattern2id;
 using FrequentPatternMining::truthPatterns;
 using FrequentPatternMining::unigrams;
 using Documents::id2token;
+
+void loadSegmentationModel(const string& filename)
+{
+    FILE* in = tryOpen(filename, "rb");
+    Binary::read(in, Segmentation::penalty);
+
+    cerr << "Length penalty model loaded." << endl;
+    cerr << "\tpenalty = " << Segmentation::penalty << endl;
+
+    // quality phrases & unigrams
+    size_t cnt = 0;
+    Binary::read(in, cnt);
+    patterns.resize(cnt);
+    for (size_t i = 0; i < cnt; ++ i) {
+        patterns[i].load(in);
+    }
+    cerr << "# of loaded patterns = " << cnt << endl;
+
+    Binary::read(in, cnt);
+    truthPatterns.resize(cnt);
+    for (size_t i = 0; i < cnt; ++ i) {
+        truthPatterns[i].load(in);
+    }
+    cerr << "# of loaded truth patterns = " << cnt << endl;
+
+    fclose(in);
+}
+
+void dumpSegmentationModel(const string& filename)
+{
+    FILE* out = tryOpen(filename, "wb");
+    Binary::write(out, Segmentation::penalty);
+
+    // quality phrases & unigrams
+    size_t cnt = 0;
+    for (size_t i = 0; i < patterns.size(); ++ i) {
+        if (patterns[i].size() > 1 && patterns[i].currentFreq > 0 || patterns[i].size() == 1 && patterns[i].currentFreq > 0 && unigrams[patterns[i].tokens[0]] >= MIN_SUP) {
+            ++ cnt;
+        }
+    }
+    Binary::write(out, cnt);
+    if (INTERMEDIATE) {
+        cerr << "# of phrases dumped = " << cnt << endl;
+    }
+    for (size_t i = 0; i < patterns.size(); ++ i) {
+        if (patterns[i].size() > 1 && patterns[i].currentFreq > 0 || patterns[i].size() == 1 && patterns[i].currentFreq > 0 && unigrams[patterns[i].tokens[0]] >= MIN_SUP) {
+            patterns[i].dump(out);
+        }
+    }
+
+    // truth
+    if (INTERMEDIATE) {
+        cerr << "# of truth dumped = " << truthPatterns.size() << endl;
+    }
+    Binary::write(out, truthPatterns.size());
+    for (size_t i = 0; i < truthPatterns.size(); ++ i) {
+        truthPatterns[i].dump(out);
+    }
+
+    fclose(out);
+}
 
 void dumpLabels(const string& filename, const vector<Pattern>& truth)
 {

@@ -78,7 +78,6 @@ class Segmentation
 private:
     static const double INF;
     static vector<vector<TOTAL_TOKENS_TYPE>> total;
-    static double penalty;
 private:
     // generated
     int maxLen;
@@ -113,6 +112,7 @@ private:
     }
 
 public:
+    static double penalty;
 
     double getProb(int id) const {
         return exp(prob[id]);
