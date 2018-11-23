@@ -4,6 +4,8 @@
 #include "../utils/utils.h"
 #include "../data_processing/documents.h"
 
+using Documents::id2token;
+
 namespace FrequentPatternMining
 {
     ULL MAGIC = 0xabcdef; //HASH BASE
@@ -91,9 +93,9 @@ namespace FrequentPatternMining
 
         inline void show() const {
             for (int i = 0; i < tokens.size(); ++ i) {
-                cerr << tokens[i] << " ";
+                cout << id2token[tokens[i]].c_str() << " ";
             }
-            cerr << endl;
+            cout << endl;
         }
     };
 

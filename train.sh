@@ -76,3 +76,12 @@ fi
 				 --shape ${SHAPE_CORPUS} \
 				 --max-positive ${MAX_POSITIVE} \
 				 --label-method ${LABEL_METHOD}
+
+echo "Dump results"
+mkdir -p model
+# cp tmp/segmentation.model model
+# cp tmp/token_mapping.txt model
+# cp tmp/final_quality_multi-words.txt model
+# cp tmp/final_quality_salient.txt model
+# cp tmp/final_quality_unigrams.txt model
+

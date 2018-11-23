@@ -88,6 +88,11 @@ private:
         for (PATTERN_ID_TYPE i = 0; i < patterns.size(); ++ i) {
             sum[patterns[i].size()] += prob[i];
         }
+
+        // for (int i = 0; i <= maxLen; i++) 
+        //     cout << (int)sum[i] << " ";
+        // cout << endl;
+
         for (PATTERN_ID_TYPE i = 0; i < patterns.size(); ++ i) {
             prob[i] /= sum[patterns[i].size()];
         }
@@ -134,10 +139,18 @@ public:
         }
         for (int i = 0; i <= maxLen; ++ i) {
             pLen[i] /= total;
+            // cout << pLen[i] << " "; 
         }
+        // cout << endl;
         double maxProb = *max_element(prob, prob + patterns.size());
         prob[patterns.size()] = log(maxProb + EPS);
         for (PATTERN_ID_TYPE i = 0; i < patterns.size(); ++ i) {
+            // if ( i == 27813 ) {
+            //     cout << "---check 2004------" << endl;
+            //     patterns[i].show();
+            //     cout << log(prob[i] + EPS ) << " " << log(pLen[patterns[i].size() - 1]) << " " << log(patterns[i].quality + EPS) << endl;
+            //     cout << "---end check 2004------" << endl;
+            // }
             prob[i] = log(prob[i] + EPS) + log(pLen[patterns[i].size() - 1]) + log(patterns[i].quality + EPS);
         }
     }
@@ -254,11 +267,60 @@ public:
         //cerr << "Energy = " << energy << endl;
     }
 
+
+    inline double viterbi_for_testing(const vector<TOKEN_ID_TYPE> &tokens, vector<double> &f, vector<int> &pre, double multi_thres, double uni_thres) {
+        f.clear();
+        f.resize(tokens.size() + 1, -INF);
+        pre.clear();
+        pre.resize(tokens.size() + 1, -1);
+        f[0] = 0;
+        pre[0] = 0;
+        for (size_t i = 0 ; i < tokens.size(); ++ i) {
+            if (f[i] < -1e80) {
+                continue;
+            }
+            bool impossible = true;
+            for (size_t j = i, u = 0; j < tokens.size(); ++ j) {
+                if (!trie[u].children.count(tokens[j])) {
+                    break;
+                }
+                u = trie[u].children[tokens[j]];
+                if (trie[u].id != -1) {
+                    if (qualify(trie[u].id, j - i + 1, multi_thres, uni_thres)) {
+                        impossible = false;
+                        PATTERN_ID_TYPE id = trie[u].id;
+                        double p = prob[id];
+                        
+                        if (f[i] + p > f[j + 1]) {
+                            f[j + 1] = f[i] + p;
+                            pre[j + 1] = i;
+                        }
+                        // cout << "show----" << endl;
+                        // cout << id << " " << endl;
+                        // patterns[id].show();
+                        // cout << "endshow----" << endl;
+                        // cout << i << " " << j << " " << p << " " << patterns[id].currentFreq << " " << patterns[id].quality << endl;
+                        // for (int o = 0; o < tokens.size(); o++) 
+                        //     cout << o << "=" << f[o] << " ";
+                        // cout << endl; 
+                    }
+                }
+            }
+            if (impossible) {
+                if (f[i] > f[i + 1]) {
+                    f[i + 1] = f[i];
+                    pre[i + 1] = i;
+                }
+            }
+        }
+        return f[tokens.size()];
+    }
+
     inline bool qualify(int id, int length, double multi_thres, double uni_thres) {
-        return id == patterns.size() && ( // These phrases are in the wiki_quality.txt, their quality scores are treated as 1.
+        return id == patterns.size() && ( // These labeled word are in the dictionary, their quality scores are treated as 1.
                     length > 1 && 1 >= multi_thres ||
                     length == 1 && 1 >= uni_thres) || 
-               id < patterns.size() && id >= 0 && (
+               id < patterns.size() && id >= 0 && ( 
                     patterns[id].size() > 1 && patterns[id].quality >= multi_thres ||
                     patterns[id].size() == 1 && patterns[id].quality >= uni_thres);
     }

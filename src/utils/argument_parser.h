@@ -26,6 +26,12 @@ void parseArgument(int argc, char* argv[])
             fromString(argv[++i ], LABEL_FILE);
         } else if (!strcmp(argv[i],"--max-positive")) {
             fromString(argv[++i ], MAX_POSITIVE);
+        } else if (!strcmp(argv[i],"--seg-file")) {
+            fromString(argv[++i ], TEXT_TO_SEG_FILE);
+        } else if (!strcmp(argv[i],"--token-map")) {
+            fromString(argv[++i ], TOKEN_MAPPING_FILE);
+        } else if (!strcmp(argv[i],"--model")) {
+            fromString(argv[++i ], SEGMENTATION_MODEL);
         } else {
             fprintf(stderr, "[Warning] Unknown Parameter: %s\n", argv[i]);
         }

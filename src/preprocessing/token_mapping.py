@@ -38,9 +38,9 @@ def getFileBaseName(input,outdir,outbase):
 		return outdir,outbase
 	lastDot = input.rfind(u'.')
 	if lastDot == -1:
-		lastDot = len(args.input)
+		lastDot = len(input)
 	lastDash = input.rfind(u'/')
-	return input[:lastDash+1],input[lastDash+1:lastDot]
+	return outdir,input[lastDash+1:lastDot]
 
 def setBit(mask,index,value):
 	if value == 1: 
@@ -148,6 +148,7 @@ def map(args):
 	wpFile = path + 'smooth_' + fileBaseName + '.txt'
 	tFile = path + 'tokenized_' + fileBaseName + '.txt'
 	spFile = path + 'shape_' + fileBaseName + '.txt'
+	print(tFile)
 
 	if (args.extract == 'yes' ):
 		spout = codecs.open(spFile,encoding='utf8',mode='w',errors='ignore')
@@ -189,7 +190,68 @@ def map(args):
 		for word,token in words_additional.items():
 			tmout.write(word + '\t' + str(token) + '\n')
 
+
 def translate(args):
+	rawIn = codecs.open(args.input,encoding='utf8',mode='r')
+	segIn = codecs.open(args.tf,encoding='utf8',mode='r')
+	smtIn = codecs.open(args.smooth,encoding='utf8',mode='r')
+
+	rawLines = rawIn.read().split('\n')
+	segLines = segIn.read().split('\n')
+	smtLines = smtIn.read().split('\n')
+
+	path,fileBaseName = getFileBaseName(args.input,args.outdir,args.outbase)
+	outFile = path + 'segmented_' + fileBaseName + '.txt'
+	
+	with codecs.open(outFile,encoding='utf8',mode='w') as out:
+		iterSeg = 0
+		for i in range(len(rawLines)):
+			rawSen = rawLines[i]
+			segSen = segLines[iterSeg]
+			smtSen = smtLines[i]
+
+			segTokens = segSen.split(' ')
+			smtTokens = smtSen.split(' ')
+			if ( len(smtTokens) == 0 or smtTokens[0] == '' ):
+				out.write(rawSen + '\n')
+				continue
+			iterSeg += 1
+
+			iterRaw = 0
+			rawLen = len(rawSen)
+			iterSmt = 0
+			inCompound = 0
+			trans = 0
+			bufferRaw = ''
+
+			for tokenID in segTokens:
+				token = smtTokens[iterSmt]
+				if tokenID == '[':
+					inCompound = 1
+				elif tokenID == ']':
+					inCompound = 0
+					trans = 0
+				else:
+					while (iterRaw < rawLen):
+						if rawSen[iterRaw] == ' ' and inCompound == 1 and trans == 1:
+							bufferRaw += '_'
+						else:
+							bufferRaw += rawSen[iterRaw]
+						iterRaw += 1
+						if bufferRaw.find(token) != -1:
+							out.write(bufferRaw)
+							bufferRaw = ''
+							if inCompound == 1:
+								trans = 1
+							break
+					iterSmt += 1
+
+			while (iterRaw < rawLen):
+				bufferRaw += rawSen[iterRaw]
+				iterRaw += 1
+			out.write(bufferRaw)
+			out.write('\n')
+
 	return
 
 def main(args):
@@ -209,6 +271,7 @@ def parse_arguments(argv):
     parser.add_argument('--tm', type=str, help='token mapping',default='tmp/token_mapping.txt')
     parser.add_argument('--outdir', type=str, help='output directory',default='tmp/')
     parser.add_argument('--outbase', type=str, help='output file base name',default='')
+    parser.add_argument('--smooth', type=str, help='smooth file',default='tmp/smooth_test.txt')
     parser.add_argument('--extract', type=str,help='extract shape feature yes/no',default='no')
     return parser.parse_args(argv)
 

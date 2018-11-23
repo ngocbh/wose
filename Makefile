@@ -4,12 +4,13 @@ IDIR =libs/icu/include
 CFLAGS = -std=c++11 -Wall -O3 -msse2
 
 
-BIN = ./bin/wose_train
+BIN = ./bin/wose_train ./bin/wose_segmesnt
 .PHONY: clean all
 
 all: ./bin $(BIN)
 
 ./bin/wose_train: ./src/main.cpp ./src/utils/*.h ./src/data_processing/*.h ./src/classification/*.h ./src/frequent_pattern_mining/*.h ./src/segmentation/*.h
+./bin/wose_segment: ./src/segment.cpp ./src/utils/*.h ./src/data_processing/*.h ./src/classification/*.h ./src/frequent_pattern_mining/*.h ./src/segmentation/*.h
 
 ./bin:
 	mkdir -p bin

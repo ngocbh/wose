@@ -23,12 +23,16 @@
 typedef unsigned long long ULL;
 typedef map<string,int> MAP_S2I;
 
-string SEGMENTATION_MODEL = "";
+string TEXT_TO_SEG_FILE = "data/test.txt";
+string SEGMENTATION_MODEL = "model/segmentation.model";
+
 int MIN_SUP = 30;
 int MAX_LEN = 6;
 int MAX_POSITIVE = -1;
 int DISCARD = 0.05;
 int ITERATIONS = 2;
+float SEGMENT_MULTI_WORD_QUALITY_THRESHOLD = 0;
+float SEGMENT_SINGLE_WORD_QUALITY_THRESHOLD = 0;
 
 bool INTERMEDIATE = true;
 
@@ -40,4 +44,5 @@ string QUALITY_WORD_FILE = "tmp/tokenized_quality_words.txt";
 string TOKEN_MAPPING_FILE = "tmp/token_mapping.txt";
 string LABEL_FILE = "tmp/tokenized_labeled_words.txt";
 string LABEL_METHOD = ""; // E: Expert label , D: Distant training , P: Positive, N: Negative 
+
 #endif 
