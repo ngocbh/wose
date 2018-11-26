@@ -20,11 +20,6 @@ using Documents::id2token;
 void loadSegmentationModel(const string& filename)
 {
     FILE* in = tryOpen(filename, "rb");
-    Binary::read(in, Segmentation::penalty);
-
-    cerr << "Length penalty model loaded." << endl;
-    cerr << "\tpenalty = " << Segmentation::penalty << endl;
-
     // quality phrases & unigrams
     size_t cnt = 0;
     Binary::read(in, cnt);
@@ -47,8 +42,6 @@ void loadSegmentationModel(const string& filename)
 void dumpSegmentationModel(const string& filename)
 {
     FILE* out = tryOpen(filename, "wb");
-    Binary::write(out, Segmentation::penalty);
-
     // quality phrases & unigrams
     size_t cnt = 0;
     for (size_t i = 0; i < patterns.size(); ++ i) {

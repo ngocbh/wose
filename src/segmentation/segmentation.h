@@ -83,27 +83,34 @@ private:
     int maxLen;
     double *prob;
 
-    void normalize() {
+    void normalize(vector<double> &pLen) {
         vector<double> sum(maxLen + 1, 0);
         for (PATTERN_ID_TYPE i = 0; i < patterns.size(); ++ i) {
             sum[patterns[i].size()] += prob[i];
         }
 
-        // for (int i = 0; i <= maxLen; i++) 
-        //     cout << (int)sum[i] << " ";
-        // cout << endl;
-
         for (PATTERN_ID_TYPE i = 0; i < patterns.size(); ++ i) {
             prob[i] /= sum[patterns[i].size()];
         }
+
+        int sumLen = 0;
+        for (PATTERN_ID_TYPE i = 0; i <= maxLen; i++) {
+            sumLen += pLen[i];
+        }
+
+        for (PATTERN_ID_TYPE i = 0; i <= maxLen; i++) {
+            pLen[i] /= sumLen;
+        }
     }
 
-    void initialize() {
+    vector<double> initialize() {
         // compute maximum tokens
         maxLen = 0;
         for (PATTERN_ID_TYPE i = 0; i < patterns.size(); ++ i) {
             maxLen = max(maxLen, patterns[i].size());
         }
+
+        vector<double> pLen(maxLen + 1, 1);
 
         prob = new double[patterns.size() + 1];
         for (PATTERN_ID_TYPE i = 0; i < patterns.size(); ++ i) {
@@ -111,14 +118,15 @@ private:
         }
         for (PATTERN_ID_TYPE i = 0; i < patterns.size(); ++ i) {
             prob[i] = patterns[i].currentFreq;
+            pLen[patterns[i].size()] += patterns[i].currentFreq;
         }
-        normalize();
+        normalize(pLen);
         prob[patterns.size()] = 1;
+
+        return pLen;
     }
 
 public:
-    static double penalty;
-
     double getProb(int id) const {
         return exp(prob[id]);
     }
@@ -127,30 +135,13 @@ public:
         delete [] prob;
     }
 
-    Segmentation(double penalty) {
-        Segmentation::penalty = penalty;
-        initialize();
-        // P(length)
+    Segmentation() {
         vector<double> pLen(maxLen + 1, 1);
-        double total = 1;
-        for (int i = 1; i <= maxLen; ++ i) {
-            pLen[i] = pLen[i - 1] / penalty;
-            total += pLen[i];
-        }
-        for (int i = 0; i <= maxLen; ++ i) {
-            pLen[i] /= total;
-            // cout << pLen[i] << " "; 
-        }
-        // cout << endl;
+        pLen = initialize();
+
         double maxProb = *max_element(prob, prob + patterns.size());
         prob[patterns.size()] = log(maxProb + EPS);
         for (PATTERN_ID_TYPE i = 0; i < patterns.size(); ++ i) {
-            // if ( i == 27813 ) {
-            //     cout << "---check 2004------" << endl;
-            //     patterns[i].show();
-            //     cout << log(prob[i] + EPS ) << " " << log(pLen[patterns[i].size() - 1]) << " " << log(patterns[i].quality + EPS) << endl;
-            //     cout << "---end check 2004------" << endl;
-            // }
             prob[i] = log(prob[i] + EPS) + log(pLen[patterns[i].size() - 1]) + log(patterns[i].quality + EPS);
         }
     }
@@ -328,5 +319,4 @@ public:
 
 const double Segmentation::INF = 1e100;
 vector<vector<TOTAL_TOKENS_TYPE>> Segmentation::total;
-double Segmentation::penalty;
 #endif

@@ -10,7 +10,7 @@ green="---"
 reset="---"
 
 PYTHON=python
-PREPROCESSING=0
+PREPROCESSING=1
 
 LABEL_METHOD="DPDN"
 MAX_POSITIVE=-1

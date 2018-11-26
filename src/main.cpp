@@ -72,6 +72,7 @@ int main(int argc, char* argv[])
     // SegPhrase, +, ++, +++, ...
     for (int iteration = 0; iteration < ITERATIONS; ++ iteration) {
         if (INTERMEDIATE) {
+            fprintf(stderr, "\n-------Round %d-------", iteration);
             fprintf(stderr, "Feature Matrix = %d X %d\n", features.size(), features.back().size());
         }
         cerr << "Estimating Phrase Quality..." << endl;
@@ -91,42 +92,11 @@ int main(int argc, char* argv[])
         cerr << "Segmenting..." << endl;
         if (true) {
             if (INTERMEDIATE) {
-                cerr << "[Length Penalty Mode]" << endl;
-            }
-            double penalty = EPS;
-            if (true) {
-                // Binary Search for Length Penalty
-                double lower = EPS, upper = 200;
-                for (int _ = 0; _ < 10; ++ _) {
-                    penalty = (lower + upper) / 2;
-                    // calculate probability to to segment each pattern to 1 part
-                    Segmentation segmentation(penalty);
-                    segmentation.rectifyFrequency(Documents::sentences);
-                    double wrong = 0, total = 0;
-                    for (int i = 0; i < truth.size(); ++ i) {
-                        if (truth[i].label == 1) {
-                            ++ total;
-                            vector<double> f;//f is dp array
-                            vector<int> pre;//pre is trace array
-                            segmentation.viterbi(truth[i].tokens, f, pre);
-                            wrong += pre[truth[i].tokens.size()] != 0; // if it is decomposed, -> wrong
-                        }
-                    }
-                    if (wrong / total <= DISCARD) {
-                        lower = penalty;
-                    } else {
-                        upper = penalty;
-                    }
-                }
-            }
-
-            
-            if (INTERMEDIATE) {
-                cerr << "Length Penalty = " << penalty << endl;
+                cerr << "[Segmentation stage]" << endl;
             }
             // Running Segmentation
-            Segmentation segmentation(penalty);
-            segmentation.rectifyFrequency(Documents::sentences);
+            Segmentation* segmentation = new Segmentation();
+            (*segmentation).rectifyFrequency(Documents::sentences);
         } 
 
         if (iteration + 1 < ITERATIONS) {
