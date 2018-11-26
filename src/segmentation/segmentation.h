@@ -83,7 +83,7 @@ private:
     int maxLen;
     double *prob;
 
-    void normalize(vector<double> &pLen) {
+    vector<double> normalize(vector<double> pLen) {
         vector<double> sum(maxLen + 1, 0);
         for (PATTERN_ID_TYPE i = 0; i < patterns.size(); ++ i) {
             sum[patterns[i].size()] += prob[i];
@@ -101,6 +101,7 @@ private:
         for (PATTERN_ID_TYPE i = 0; i <= maxLen; i++) {
             pLen[i] /= sumLen;
         }
+        return pLen;
     }
 
     vector<double> initialize() {
@@ -120,7 +121,7 @@ private:
             prob[i] = patterns[i].currentFreq;
             pLen[patterns[i].size()] += patterns[i].currentFreq;
         }
-        normalize(pLen);
+        pLen = normalize(pLen);
         prob[patterns.size()] = 1;
 
         return pLen;
