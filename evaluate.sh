@@ -20,5 +20,6 @@ fi
 
 if [ $EVALUATE_SEGMENTATION -eq 1 ]
 then 
+	./segment.sh
 	${PYPY} tools/evaluations/evaluate_segmentation.py --input model/segmented_test.txt --base data/segmented-test.txt --outdir experiment/ --outbase evaluation_segmentation.txt
 fi

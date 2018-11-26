@@ -119,6 +119,8 @@ int main(int argc, char* argv[])
                     }
                 }
             }
+
+            
             if (INTERMEDIATE) {
                 cerr << "Length Penalty = " << penalty << endl;
             }

@@ -30,6 +30,9 @@ def evaluator1(args, out):
 			cntSen = 0
 			crrSpace = 0
 			cntSpace = 0
+			truePositive = 0
+			positivePrediction = 0
+			positiveLabel = 0
 
 			for i in range(len(sentencesIn)):
 				sentenceIn = sentencesIn[i]
@@ -46,6 +49,14 @@ def evaluator1(args, out):
 						cntSpaceInSen += 1
 						if ( sentenceIn[j] == sentenceBI[j] ):
 							crrSpaceInSen += 1
+
+					if (sentenceIn[j] == '_'):
+						positivePrediction += 1
+						if (sentenceBI[j] == '_'):
+							truePositive += 1
+
+					if (sentenceBI[j] == '_'):
+						positiveLabel += 1
 				
 				cntSpace += cntSpaceInSen
 				crrSpace += crrSpaceInSen
@@ -53,13 +64,24 @@ def evaluator1(args, out):
 				if cntSpaceInSen == crrSpaceInSen:
 					crrSen += 1
 
-			out.write("correct space " + str(crrSpace) + '\n')
-			out.write("count space " + str(cntSpace) + '\n')
-			out.write("prediction space accuracy " + str(crrSpace/float(cntSpace)) + '\n')
+			out.write("correct space: " + str(crrSpace) + '\n')
+			out.write("count space: " + str(cntSpace) + '\n')
+			out.write("prediction space accuracy: " + str(crrSpace*100/float(cntSpace)) + '\n')
 			out.write("\n")
-			out.write("correct sentences " + str(crrSen) + '\n')
-			out.write("count sentences " + str(cntSen) + '\n')
-			out.write("prediction sentences accuracy " + str(crrSen/float(cntSen)) + '\n')
+			out.write("correct sentences: " + str(crrSen) + '\n')
+			out.write("count sentences: " + str(cntSen) + '\n')
+			out.write("prediction sentences accuracy: " + str(crrSen*100/float(cntSen)) + '\n')
+			out.write("\n")
+			precision = truePositive/float(positivePrediction + (positivePrediction == 0))
+			recall = truePositive/float(positiveLabel + (positiveLabel == 0))
+			f1score = 2*precision*recall/(precision+recall+(precision == 0 and recall == 0))
+			out.write("true positive: " + str(truePositive) + '\n')
+			out.write("positive prediction: " + str(positivePrediction) + '\n')
+			out.write("positive label: " + str(positiveLabel) + '\n')
+			out.write("precision: " + str(precision*100) + '\n')
+			out.write("recall: " + str(recall*100) + '\n')
+			out.write("f1 score: " + str(f1score*100) + '\n')
+			
 
 
 def main(args):

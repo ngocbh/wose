@@ -4,7 +4,7 @@ IDIR =libs/icu/include
 CFLAGS = -std=c++11 -Wall -O3 -msse2
 
 
-BIN = ./bin/wose_train ./bin/wose_segmesnt
+BIN = ./bin/wose_train ./bin/wose_segment
 .PHONY: clean all
 
 all: ./bin $(BIN)
