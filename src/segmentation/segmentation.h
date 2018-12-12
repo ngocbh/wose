@@ -52,7 +52,7 @@ void constructTrie(bool duringTraingStage = true) {
         cerr << "# of trie nodes = " << trie.size() << endl;
     }
 
-    if (duringTraingStage) {
+    if (false) {
         for (PATTERN_ID_TYPE i = 0; i < truthPatterns.size(); ++ i) {
             const vector<TOTAL_TOKENS_TYPE>& tokens = truthPatterns[i].tokens;
             size_t u = 0;
@@ -98,9 +98,12 @@ private:
             sumLen += pLen[i];
         }
 
+        cout << "pLen " << endl;
         for (PATTERN_ID_TYPE i = 0; i <= maxLen; i++) {
             pLen[i] /= sumLen;
+            cout << pLen[i] << " ";
         }
+        cout << endl;
         return pLen;
     }
 
@@ -119,7 +122,7 @@ private:
         }
         for (PATTERN_ID_TYPE i = 0; i < patterns.size(); ++ i) {
             prob[i] = patterns[i].currentFreq;
-            pLen[patterns[i].size()] += patterns[i].currentFreq;
+            pLen[patterns[i].size() - 1] += patterns[i].currentFreq;
         }
         pLen = normalize(pLen);
         prob[patterns.size()] = 1;
@@ -144,6 +147,7 @@ public:
         prob[patterns.size()] = log(maxProb + EPS);
         for (PATTERN_ID_TYPE i = 0; i < patterns.size(); ++ i) {
             prob[i] = log(prob[i] + EPS) + log(pLen[patterns[i].size() - 1]) + log(patterns[i].quality + EPS);
+            // if ( i == 22101 ) cout << patterns[i].currentFreq << " " << patterns[i].quality << " " << prob[i] << " " << 
         }
     }
 
@@ -287,14 +291,14 @@ public:
                             f[j + 1] = f[i] + p;
                             pre[j + 1] = i;
                         }
-                        // cout << "show----" << endl;
-                        // cout << id << " " << endl;
-                        // patterns[id].show();
-                        // cout << "endshow----" << endl;
-                        // cout << i << " " << j << " " << p << " " << patterns[id].currentFreq << " " << patterns[id].quality << endl;
-                        // for (int o = 0; o < tokens.size(); o++) 
-                        //     cout << o << "=" << f[o] << " ";
-                        // cout << endl; 
+                        cout << "show----" << endl;
+                        cout << id << " " << endl;
+                        patterns[id].show();
+                        cout << "endshow----" << endl;
+                        cout << i << " " << j << " " << p << " " << patterns[id].currentFreq << " " << patterns[id].quality << endl;
+                        for (int o = 0; o < tokens.size(); o++) 
+                            cout << o << "=" << f[o] << " ";
+                        cout << endl; 
                     }
                 }
             }

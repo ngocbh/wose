@@ -51,7 +51,6 @@ int main(int argc, char* argv[])
     vector<vector<double>> featuresUnigram = Features::extractUnigram(featureNamesUnigram);
 
     //labeled 
-    // tất cả các 
     cerr << "Constructing label pools..." << endl;
     vector<Pattern> truth = Label::generateAll(LABEL_METHOD, LABEL_FILE, ALL_WORD_FILE, QUALITY_WORD_FILE);
 

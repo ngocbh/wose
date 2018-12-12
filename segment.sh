@@ -9,10 +9,10 @@ fi
 green="---"
 reset="---"
 PYTHON=python
-PREPROCESSING=0
+PREPROCESSING=1
 
 MODEL=${MODEL:- "model"}
-RAW_TEXT=${RAW_TEXT:-data/test.txt}
+RAW_TEXT=${RAW_TEXT:-data/mini_test.txt}
 TEXT_TO_SEG=${TEXT_TO_SEG:-tmp/tokenized_test.txt}
 SMOOTH_TEXT=${SHAPE_TEXT:-tmp/smooth_test.txt}
 PUNCTUATION_MAPPING="data/punctuation_mapping.txt"

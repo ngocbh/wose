@@ -71,14 +71,14 @@ then
 	echo ${green}===END===Mapping all words===${reset}
 	echo ""
 fi
-./bin/wose_train --corpus ${TOKENIZED_CORPUS} \
+time ./bin/wose_train --corpus ${TOKENIZED_CORPUS} \
 				 --stopwords ${TOKENIZED_STOPWORD} \
 				 --shape ${SHAPE_CORPUS} \
 				 --max-positive ${MAX_POSITIVE} \
 				 --label-method ${LABEL_METHOD}
 
-echo "Dump results"
-mkdir -p model
+# echo "Dump results"
+# mkdir -p model
 # cp tmp/segmentation.model model
 # cp tmp/token_mapping.txt model
 # cp tmp/final_quality_multi-words.txt model
