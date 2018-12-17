@@ -16,12 +16,14 @@
 #include <set>
 #include <unordered_map>
 #include <unordered_set>
+#include <math.h>
 
 using namespace std;
 
 #define FOR(i,a) for (__typeof((a).begin()) i = (a).begin(); i != (a).end(); ++ i)
 
 const double EPS = 1e-8;
+const int INF = 1000000000 + 7;
 
 inline int getBit(int mask,int index)
 {

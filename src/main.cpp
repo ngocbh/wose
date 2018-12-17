@@ -10,11 +10,13 @@
 #include "utils/random.h"
 #include "classification/predict_quality.h"
 #include "segmentation/segmentation.h"
+#include "segmentation/ternary_search.h"
 using namespace std;
 
 using FrequentPatternMining::Pattern;
 using FrequentPatternMining::patterns;
 using FrequentPatternMining::truthPatterns;
+using FrequentPatternMining::truthLabels;
 using RandomNumbers::rng;
 
 int main(int argc, char* argv[])
@@ -91,41 +93,22 @@ int main(int argc, char* argv[])
         cerr << "Segmenting..." << endl;
         if (true) {
             if (INTERMEDIATE) {
-                cerr << "[Length Penalty Mode]" << endl;
+                cerr << "[Length Alpha Mode]" << endl;
             }
-            double penalty = EPS;
+            double alpha = EPS;
+            double beta = 1;
             if (true) {
-                // Binary Search for Length Penalty
-                double lower = EPS, upper = 200;
-                for (int _ = 0; _ < 10; ++ _) {
-                    penalty = (lower + upper) / 2;
-                    // calculate probability to to segment each pattern to 1 part
-                    Segmentation segmentation(penalty);
-                    segmentation.rectifyFrequency(Documents::sentences);
-                    double wrong = 0, total = 0;
-                    for (int i = 0; i < truth.size(); ++ i) {
-                        if (truth[i].label == 1) {
-                            ++ total;
-                            vector<double> f;//f is dp array
-                            vector<int> pre;//pre is trace array
-                            segmentation.viterbi(truth[i].tokens, f, pre);
-                            wrong += pre[truth[i].tokens.size()] != 0; // if it is decomposed, -> wrong
-                        }
-                    }
-                    if (wrong / total <= DISCARD) {
-                        lower = penalty;
-                    } else {
-                        upper = penalty;
-                    }
-                }
+                vector<Pattern> truthPool = Label::generatePool(NEG_POOL_SIZE, POS_POOL_SIZE, truthLabels, truth);
+                Dump::dumpLabels("tmp/labeled_words_pool.txt",truthPool);
+                // Ternary Search for alpha and beta
+                ternary_search(alpha,beta,truthPool);
             }
-
             
             if (INTERMEDIATE) {
-                cerr << "Length Penalty = " << penalty << endl;
+                cerr << "Length alpha = " << alpha << endl;
             }
             // Running Segmentation
-            Segmentation segmentation(penalty);
+            Segmentation segmentation(alpha,beta);
             segmentation.rectifyFrequency(Documents::sentences);
         } 
 

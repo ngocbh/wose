@@ -52,7 +52,7 @@ void constructTrie(bool duringTraingStage = true) {
         cerr << "# of trie nodes = " << trie.size() << endl;
     }
 
-    if (duringTraingStage) {
+    if (false) {
         for (PATTERN_ID_TYPE i = 0; i < truthPatterns.size(); ++ i) {
             const vector<TOTAL_TOKENS_TYPE>& tokens = truthPatterns[i].tokens;
             size_t u = 0;
@@ -89,10 +89,6 @@ private:
             sum[patterns[i].size()] += prob[i];
         }
 
-        // for (int i = 0; i <= maxLen; i++) 
-        //     cout << (int)sum[i] << " ";
-        // cout << endl;
-
         for (PATTERN_ID_TYPE i = 0; i < patterns.size(); ++ i) {
             prob[i] /= sum[patterns[i].size()];
         }
@@ -117,7 +113,8 @@ private:
     }
 
 public:
-    static double penalty;
+    static double alpha;
+    static double beta;
 
     double getProb(int id) const {
         return exp(prob[id]);
@@ -127,31 +124,25 @@ public:
         delete [] prob;
     }
 
-    Segmentation(double penalty) {
-        Segmentation::penalty = penalty;
+    Segmentation(double alpha,double beta) {
+        Segmentation::alpha = alpha;
+        Segmentation::beta = beta;
         initialize();
         // P(length)
         vector<double> pLen(maxLen + 1, 1);
         double total = 1;
         for (int i = 1; i <= maxLen; ++ i) {
-            pLen[i] = pLen[i - 1] / penalty;
+            pLen[i] = pLen[i - 1] / alpha;
             total += pLen[i];
         }
         for (int i = 0; i <= maxLen; ++ i) {
             pLen[i] /= total;
-            // cout << pLen[i] << " "; 
         }
-        // cout << endl;
+
         double maxProb = *max_element(prob, prob + patterns.size());
         prob[patterns.size()] = log(maxProb + EPS);
         for (PATTERN_ID_TYPE i = 0; i < patterns.size(); ++ i) {
-            // if ( i == 27813 ) {
-            //     cout << "---check 2004------" << endl;
-            //     patterns[i].show();
-            //     cout << log(prob[i] + EPS ) << " " << log(pLen[patterns[i].size() - 1]) << " " << log(patterns[i].quality + EPS) << endl;
-            //     cout << "---end check 2004------" << endl;
-            // }
-            prob[i] = log(prob[i] + EPS) + log(pLen[patterns[i].size() - 1]) + log(patterns[i].quality + EPS);
+            prob[i] = log(prob[i] + EPS) + log(pLen[patterns[i].size() - 1]) + beta*log(patterns[i].quality + EPS);
         }
     }
 
@@ -296,8 +287,10 @@ public:
                             pre[j + 1] = i;
                         }
                         // cout << "show----" << endl;
-                        // cout << id << " " << endl;
-                        // patterns[id].show();
+                        // cout << tokens[j] << " " << endl;
+                        // for (int k = i; k <= j; k++)
+                        //     cout << id2token[tokens[k]].c_str() << " ";
+                        // cout << endl;
                         // cout << "endshow----" << endl;
                         // cout << i << " " << j << " " << p << " " << patterns[id].currentFreq << " " << patterns[id].quality << endl;
                         // for (int o = 0; o < tokens.size(); o++) 
@@ -328,5 +321,6 @@ public:
 
 const double Segmentation::INF = 1e100;
 vector<vector<TOTAL_TOKENS_TYPE>> Segmentation::total;
-double Segmentation::penalty;
+double Segmentation::alpha;
+double Segmentation::beta;
 #endif

@@ -10,9 +10,9 @@ green="---"
 reset="---"
 
 PYTHON=python
-PREPROCESSING=0
+PREPROCESSING=1
 
-LABEL_METHOD="DPDN"
+LABEL_METHOD="EPENDPDN"
 MAX_POSITIVE=-1
 
 RAW_CORPUS="data/raw-corpus-5K.txt"
@@ -20,6 +20,7 @@ PUNCTUATION_MAPPING="data/punctuation_mapping.txt"
 STOPWORDS="data/stopwords.txt"
 ALL_WORDS=data/WordList41K.txt
 QUALITY_WORDS=data/WordList32K.txt
+LABEL_FILE=data/labeled_words.txt
 
 TOKEN_MAPPING="tmp/token_mapping.txt"
 SHAPE_CORPUS="tmp/shape_corpus.txt"
@@ -27,6 +28,7 @@ TOKENIZED_CORPUS="tmp/tokenized_corpus.txt"
 TOKENIZED_STOPWORD="tmp/tokenized_stopwords.txt"
 TOKENIZED_QUALITY_WORD="tmp/tokenized_quality_words.txt"
 TOKENIZED_ALL_WORD="tmp/tokenized_all_words.txt"
+TOKENIZED_LABEL_FILE="tmp/tokenized_labeled_words.txt"
 
 if [ ${PREPROCESSING} -eq 1 ] 
 then 
@@ -70,12 +72,22 @@ then
 												 --outdir tmp/
 	echo ${green}===END===Mapping all words===${reset}
 	echo ""
+	echo ${green}===BEGIN===Mapping labeled words===${reset}
+	time ${PYTHON} src/preprocessing/token_mapping.py --mode map \
+												 --input ${LABEL_FILE} \
+												 --pm ${PUNCTUATION_MAPPING} \
+												 --tm ${TOKEN_MAPPING} \
+												 --outbase labeled_words \
+												 --outdir tmp/
+	echo ${green}===END===Mapping all words===${reset}
+	echo ""
 fi
 ./bin/wose_train --corpus ${TOKENIZED_CORPUS} \
 				 --stopwords ${TOKENIZED_STOPWORD} \
 				 --shape ${SHAPE_CORPUS} \
 				 --max-positive ${MAX_POSITIVE} \
-				 --label-method ${LABEL_METHOD}
+				 --label-method ${LABEL_METHOD} \
+				 --label-file ${TOKENIZED_LABEL_FILE}
 
 echo "Dump results"
 mkdir -p model

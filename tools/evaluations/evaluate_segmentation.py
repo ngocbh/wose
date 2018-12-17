@@ -16,7 +16,7 @@ def jointPath(outdir,outbase):
         outdir += '/'
     return outdir + outbase
 
-def evaluator1(args, out):
+def evaluator1(args, out, outErr):
 	out.write("-----=====EVALUETOR 1======-----\n")
 	with codecs.open(args.input,encoding='utf8',mode='r') as inp:
 		with codecs.open(args.base,encoding='utf8',mode='r') as baseIn:
@@ -49,6 +49,9 @@ def evaluator1(args, out):
 						cntSpaceInSen += 1
 						if ( sentenceIn[j] == sentenceBI[j] ):
 							crrSpaceInSen += 1
+						else:
+							outErr.write(str(i+1) + ' ' + str(j) + ' : ' + sentenceIn[j-5:j+6] + ' <--> ' + sentenceBI[j-5:j+6] + '\n')
+
 
 					if (sentenceIn[j] == '_'):
 						positivePrediction += 1
@@ -86,7 +89,8 @@ def evaluator1(args, out):
 
 def main(args):
 	out = codecs.open(jointPath(args.outdir,args.outbase),encoding='utf8',mode='w')
-	evaluator1(args,out)
+	outErr = codecs.open(jointPath(args.outdir, 'evaluation_segmentation_error.txt'),encoding='utf8',mode='w')
+	evaluator1(args,out,outErr)
 
         
 def parse_arguments(argv):

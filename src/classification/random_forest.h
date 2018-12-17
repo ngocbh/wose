@@ -147,13 +147,13 @@ public:
         for (int i = 0; i < (int)results.size(); ++ i) {
             index[(int)results[i]].push_back(i);
         }
+
         // contribution of autophrase . tạo ra pool 2*selected sample với positive sample = negative sample
         vector<int> rootBag; //2K perturbed training set
         for (int type = 0; type < 2; ++ type) {
             //chọn ra "selected" sample bất kỳ từ pool tạo ra
             int selected = min(K_OUT_OF_N, (int)(min(index[0].size(), index[1].size())));
             for (int i = 0; i < selected; ++ i) {
-                //deleted
                 int id = index[type][rng.next(index[type].size())];
                 rootBag.push_back(id);
             }
