@@ -101,6 +101,7 @@ int main(int argc, char* argv[])
                 vector<Pattern> truthPool = Label::generatePool(NEG_POOL_SIZE, POS_POOL_SIZE, truthLabels, truth);
                 Dump::dumpLabels("tmp/labeled_words_pool.txt",truthPool);
                 // Ternary Search for alpha and beta
+                cerr << "====Ternary Search====" << endl;
                 ternary_search(alpha,beta,truthPool);
             }
             
