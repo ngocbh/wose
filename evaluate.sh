@@ -7,7 +7,7 @@ DICTIONARY='data/WordList76K.txt'
 RANKING_MULTI='experiment/server/tmp/final_quality_multi-words.txt'
 RANKING_UNIGRAMS='experiment/server/tmp/final_quality_unigrams.txt'
 RANKING_SALIENT='experiment/server/tmp/final_quality_salient.txt'
-EVALUATE_RANKING=0
+EVALUATE_RANKING=1
 EVALUATE_SEGMENTATION=1
 mkdir -p experiment
 
@@ -20,6 +20,6 @@ fi
 
 if [ $EVALUATE_SEGMENTATION -eq 1 ]
 then 
-	./segment.sh
+	# ./segment.sh
 	${PYPY} tools/evaluations/evaluate_segmentation.py --input model/segmented_test.txt --base data/segmented-test.txt --outdir experiment/ --outbase evaluation_segmentation.txt
 fi

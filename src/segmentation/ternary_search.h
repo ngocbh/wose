@@ -36,7 +36,7 @@ double calc_loss_function(double alpha,double beta,vector<Pattern> truthPool,boo
 	g = wrongNegative / cntNegative;
 
 	// return loss function
-	double lf = pow(100,f*f) + pow(100,g*g) - 2;
+	double lf = 10*pow(100,f*f) + pow(100,g*g) - 2;
 
 	if (isLastRound && INTERMEDIATE) {
 		cerr << "\tAlpha : " << alpha << " | Beta : " << beta << endl;

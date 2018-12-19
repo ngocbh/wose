@@ -9,7 +9,7 @@ fi
 green="---"
 reset="---"
 PYTHON=python
-PREPROCESSING=0
+PREPROCESSING=1
 
 MODEL=${MODEL:- "model"}
 RAW_TEXT=${RAW_TEXT:-data/test.txt}

@@ -174,7 +174,7 @@ inline vector<Pattern> generateAll(string LABEL_METHOD, string LABEL_FILE, strin
 
         unordered_set<ULL> include = loadPatterns(QUALITY_FILE, MAX_POSITIVE);
         unordered_set<ULL> exclude = loadPatterns(ALL_FILE, MAX_POSITIVE);
-        cout << include.size() << " " << exclude.size() << endl;
+
         if (MAX_POSITIVE != -1) {
             exclude.clear();
         }

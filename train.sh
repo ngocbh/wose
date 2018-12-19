@@ -82,7 +82,7 @@ then
 	echo ${green}===END===Mapping all words===${reset}
 	echo ""
 fi
-./bin/wose_train --corpus ${TOKENIZED_CORPUS} \
+time ./bin/wose_train --corpus ${TOKENIZED_CORPUS} \
 				 --stopwords ${TOKENIZED_STOPWORD} \
 				 --shape ${SHAPE_CORPUS} \
 				 --max-positive ${MAX_POSITIVE} \

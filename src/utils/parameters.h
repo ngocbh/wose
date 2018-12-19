@@ -26,14 +26,14 @@ typedef map<string,int> MAP_S2I;
 string TEXT_TO_SEG_FILE = "data/test.txt";
 string SEGMENTATION_MODEL = "model/segmentation.model";
 
-int MIN_SUP = 30;
+int MIN_SUP = 7;
 int MAX_LEN = 6;
 int MAX_POSITIVE = -1;
 int DISCARD = 0.05;
 int ITERATIONS = 2;
-int NEG_POOL_SIZE = 3000;
-int POS_POOL_SIZE = -1;
-float SEGMENT_MULTI_WORD_QUALITY_THRESHOLD = 0.8;
+int NEG_POOL_SIZE = 10000;
+int POS_POOL_SIZE = 10000;
+float SEGMENT_MULTI_WORD_QUALITY_THRESHOLD = 0.6;
 float SEGMENT_SINGLE_WORD_QUALITY_THRESHOLD = 0;
 
 bool INTERMEDIATE = true;
