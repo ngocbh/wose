@@ -102,6 +102,7 @@ int main(int argc, char* argv[])
 
     constructTrie(false); // update the current frequent enough patterns
 
+    Segmentation::alpha = 0.195313;
     Segmentation* segmenter = new Segmentation(Segmentation::alpha,Segmentation::beta);
 
     FILE* in = tryOpen(TEXT_TO_SEG_FILE, "r");

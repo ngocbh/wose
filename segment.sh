@@ -8,11 +8,12 @@ fi
 
 green="---"
 reset="---"
-PYTHON=python
+PYTHON=python3
 PREPROCESSING=1
 
 MODEL=${MODEL:- "model"}
 RAW_TEXT=${RAW_TEXT:-data/test.txt}
+NAMED_TEXT=${NAMED_TEXT:-tmp/named_test.txt}
 TEXT_TO_SEG=${TEXT_TO_SEG:-tmp/tokenized_test.txt}
 SMOOTH_TEXT=${SHAPE_TEXT:-tmp/smooth_test.txt}
 PUNCTUATION_MAPPING="data/punctuation_mapping.txt"
@@ -38,7 +39,7 @@ fi
 				   --model $SEGMENTATION_MODEL 
 
 ${PYTHON} src/preprocessing/token_mapping.py --mode translate \
-											 --input ${RAW_TEXT} \
+											 --input ${NAMED_TEXT} \
 											 --tf tmp/tokenized_segmented_sentences.txt \
 											 --smooth ${SMOOTH_TEXT} \
 											 --outdir model/ \

@@ -37,6 +37,8 @@ def evaluator1(args, out, outErr):
 			for i in range(len(sentencesIn)):
 				sentenceIn = sentencesIn[i]
 				sentenceBI = sentencesBI[i]
+				# print(sentenceBI)
+				# print(sentenceIn)
 				if ( i + 1 >= len(sentencesBI) ):
 					break
 
@@ -58,6 +60,7 @@ def evaluator1(args, out, outErr):
 						if (sentenceBI[j] == '_'):
 							truePositive += 1
 
+					assert j < len(sentenceBI), str(i) + ' ' + str(j) + ' ' + str(len(sentenceBI))
 					if (sentenceBI[j] == '_'):
 						positiveLabel += 1
 				

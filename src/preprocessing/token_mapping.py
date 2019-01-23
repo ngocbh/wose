@@ -1,5 +1,5 @@
 #!/usr/bin/python
-# -*- encoding: utf8 -*-
+# -*- coding: utf8 -*-
 
 import re
 import argparse
@@ -112,6 +112,25 @@ def extractShapeFeatures(token, ptoken, separator_before, separator_after):
 
 	return mask
 
+def get_name(data):
+	regex = re.compile(r'([A-ZÁÀẢÃẠĂẮẰẴẶẲÂẦẤẬẪẨĐÈÉẺẼẸÊỀÉỂỄỆÌÍỈĨỊÒÓỎÕỌÔỒỐỔỖỘƠỜỚỞỠỢÙÚỦŨỤƯỪỨỬỮỰỲÝỶỸỴ]+[a-zàáảãạăắằẵặẳâầấậẫẩđèéẻẽẹêềếểễệìíỉĩịòóỏõọôồốổỗộơờớởỡợùúủũụưừứửữựỳýỷỹỵ]*)( [A-ZÁÀẢÃẠĂẮẰẴẶẲÂẦẤẬẪẨĐÈÉẺẼẸÊỀÉỂỄỆÌÍỈĨỊÒÓỎÕỌÔỒỐỔỖỘƠỜỚỞỠỢÙÚỦŨỤƯỪỨỬỮỰỲÝỶỸỴ]+[a-zàáảãạăắằẵặẳâầấậẫẩđèéẻẽẹêềếểễệìíỉĩịòóỏõọôồốổỗộơờớởỡợùúủũụưừứửữựỳýỷỹỵ]*)( [A-ZÁÀẢÃẠĂẮẰẴẶẲÂẦẤẬẪẨĐÈÉẺẼẸÊỀÉỂỄỆÌÍỈĨỊÒÓỎÕỌÔỒỐỔỖỘƠỜỚỞỠỢÙÚỦŨỤƯỪỨỬỮỰỲÝỶỸỴ]+[a-zàáảãạăắằẵặẳâầấậẫẩđèéẻẽẹêềếểễệìíỉĩịòóỏõọôồốổỗộơờớởỡợùúủũụưừứửữựỳýỷỹỵ]*)*',re.UNICODE)
+
+	li = []
+	for char in data:
+		li.append(char)
+
+	it = regex.finditer(data)
+	for match in it:
+		for i in range(match.start(),match.end(),1):
+			if ( li[i] == ' ' ):
+				li[i] = '_'
+
+	ret = u''
+	for el in li:
+		ret += el
+
+	return ret
+
 def map(args):
 	words = {}
 	words_additional = {}
@@ -148,43 +167,47 @@ def map(args):
 	wpFile = path + 'smooth_' + fileBaseName + '.txt'
 	tFile = path + 'tokenized_' + fileBaseName + '.txt'
 	spFile = path + 'shape_' + fileBaseName + '.txt'
-	print(tFile)
+	nFile = path + 'named_' + fileBaseName + '.txt'
 
 	if (args.extract == 'yes' ):
 		spout = codecs.open(spFile,encoding='utf8',mode='w',errors='ignore')
 
 	with codecs.open(wpFile,encoding='utf8',mode='w',errors='ignore') as wpout:
 		with codecs.open(tFile,encoding='utf8',mode='w',errors='ignore') as tcout:
-			with codecs.open(args.input,encoding='utf8',mode='r',errors='ignore') as inp:
-				data = inp.read();
-				for punc_s,punc_t in punc_map.items():
-					data = data.replace(punc_s,punc_t)
+			with codecs.open(nFile,encoding='utf8',mode='w',errors='ignore') as ncout:
+				with codecs.open(args.input,encoding='utf8',mode='r',errors='ignore') as inp:
+					data = inp.read();
+					# data = get_name(data)
+					ncout.write(data)
+					
+					for punc_s,punc_t in punc_map.items():
+						data = data.replace(punc_s,punc_t)
 
-				sentences = data.split('\n')
-				for sentence in sentences:
-					ptokens = re.split(' ',sentence)
-					for index,ptoken in enumerate(ptokens):
-						ptoken,separator_before,separator_after = nomalize(ptoken)
-						tokens = re.split(DELEMITERS,ptoken)
-						for token in tokens: 
-							token,_,_ = nomalize(token)
-							if ( len(token) == 0 ):
-								continue
-							if ( args.extract == 'yes' ):
-								spout.write(str(extractShapeFeatures(token,ptoken,(separator_before == 1),((separator_after==1) or (index == len(ptokens))) )) + ' ')
-							lower_token = token.lower()
-							if ( lower_token == '' ):
-								continue
-							wpout.write(token + ' ')
-							if lower_token not in words:
-								nWord += 1
-								words[lower_token] = nWord
-								words_additional[lower_token] = nWord
-							tcout.write(str(words[lower_token]) + u' ')
-					wpout.write('\n')
-					tcout.write('\n')
-					if ( args.extract == 'yes' ):
-						spout.write('\n')
+					sentences = data.split('\n')
+					for sentence in sentences:
+						ptokens = re.split(' ',sentence)
+						for index,ptoken in enumerate(ptokens):
+							ptoken,separator_before,separator_after = nomalize(ptoken)
+							tokens = re.split(DELEMITERS,ptoken)
+							for token in tokens: 
+								token,_,_ = nomalize(token)
+								if ( len(token) == 0 ):
+									continue
+								if ( args.extract == 'yes' ):
+									spout.write(str(extractShapeFeatures(token,ptoken,(separator_before == 1),((separator_after==1) or (index == len(ptokens))) )) + ' ')
+								lower_token = token.lower()
+								if ( lower_token == '' ):
+									continue
+								wpout.write(token + ' ')
+								if lower_token not in words:
+									nWord += 1
+									words[lower_token] = nWord
+									words_additional[lower_token] = nWord
+								tcout.write(str(words[lower_token]) + u' ')
+						wpout.write('\n')
+						tcout.write('\n')
+						if ( args.extract == 'yes' ):
+							spout.write('\n')
 
 	with codecs.open(args.tm,encoding='utf8',mode='a',errors='ignore') as tmout:
 		for word,token in words_additional.items():

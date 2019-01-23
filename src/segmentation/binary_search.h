@@ -1,5 +1,5 @@
-#ifndef __TERNARY_SEARCH__
-#define __TERNARY_SEARCH__
+#ifndef __BINARY_SEARCH__
+#define __BINARY_SEARCH__
 
 #include "../utils/utils.h"
 #include "../utils/parameters.h"
@@ -130,9 +130,6 @@ void binary_search(double &alpha,double &beta,vector<Pattern> truthPool)
     	cerr << "\twrongPositive = " << wrongPositive << endl;
     	cerr << "\twrongNegative = " << wrongNegative << endl;
     }
-
-	alpha = left_alpha;
-	beta = left_beta;
 }
 
 #endif

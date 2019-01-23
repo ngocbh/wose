@@ -30,3 +30,4 @@
 dawg
 pandas
 argparse
+regex
